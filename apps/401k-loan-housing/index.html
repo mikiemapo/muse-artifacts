@@ -1,0 +1,671 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="data:," />
+<title>401(k) Loan for Housing Deposits — Research Brief</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,650;8..60,760&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    color-scheme: light dark;
+    --bg:#fbfbfa; --bg2:#f3f3f0; --card:#ffffff; --ink:#1b1a16; --ink2:#4c4a44;
+    --ink3:#77756c; --line:#e3e1d9; --line2:#d3d0c4;
+    --accent:#14532d; --accent-ink:#eaf5ee; --accent-soft:#e5f1e9;
+    --warn:#9a3412; --warn-soft:#fbf0e6; --danger:#b91c1c; --danger-soft:#faebeb;
+    --info:#1e4f7a; --info-soft:#e9f1f8;
+    --mono:"IBM Plex Mono",ui-monospace,monospace;
+    --serif:"Source Serif 4",Georgia,serif; --sans:"Public Sans",system-ui,-apple-system,sans-serif;
+    --shadow:0 1px 2px rgba(27,26,22,.06),0 8px 28px rgba(27,26,22,.07);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#101210; --bg2:#161816; --card:#1b1d1b; --ink:#eceae2; --ink2:#c4c2b8;
+      --ink3:#8f8d82; --line:#2b2d2b; --line2:#3a3d3a;
+      --accent:#7fc795; --accent-ink:#0d1f12; --accent-soft:#16281c;
+      --warn:#e8a16b; --warn-soft:#2a1c12; --danger:#f07f7f; --danger-soft:#2c1515;
+      --info:#8fc2e8; --info-soft:#152330;
+      --shadow:0 1px 2px rgba(0,0,0,.4),0 12px 34px rgba(0,0,0,.35);
+    }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased}
+  ::selection{background:var(--accent);color:var(--accent-ink)}
+  a{color:var(--accent);text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
+  @media (prefers-color-scheme: dark){a{color:var(--accent)}}
+  a:hover{text-decoration-thickness:2px}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 22px}
+  .topbar{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:6px}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
+  .edited{font-family:var(--mono);font-size:12px;color:var(--ink3)}
+  header.hero{padding:34px 0 8px;border-bottom:1px solid var(--line)}
+  header.hero h1{font-family:var(--serif);font-weight:760;font-size:clamp(34px,5.4vw,58px);line-height:1.06;letter-spacing:-0.015em;margin:14px 0 14px}
+  header.hero .lede{font-size:18px;color:var(--ink2);max-width:46rem;margin:0 0 22px}
+  .dateline{display:flex;flex-wrap:wrap;gap:10px 22px;font-family:var(--mono);font-size:12.5px;color:var(--ink3);margin-bottom:26px}
+  .verdict{border:1px solid var(--line2);background:var(--card);box-shadow:var(--shadow);border-radius:14px;padding:26px 28px;margin:26px 0 8px}
+  .verdict h2{font-family:var(--serif);font-size:24px;font-weight:650;margin:0 0 12px;letter-spacing:-0.01em}
+  .verdict .rule{border-top:1px solid var(--line);padding:12px 0;display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:start}
+  .verdict .rule:first-of-type{border-top:none}
+  .verdict .rule .mark{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex:none}
+  .mark.ok{background:var(--accent-soft);color:var(--accent)}
+  .mark.no{background:var(--danger-soft);color:var(--danger)}
+  .mark.warn{background:var(--warn-soft);color:var(--warn)}
+  .verdict .rule p{margin:0}
+  .cite{font-family:var(--mono);font-size:11.5px;color:var(--ink3);letter-spacing:.02em}
+  section.block{padding:44px 0;border-bottom:1px solid var(--line)}
+  section.block:last-of-type{border-bottom:none}
+  .secno{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:8px}
+  section.block h2{font-family:var(--serif);font-size:clamp(24px,3.4vw,34px);font-weight:650;letter-spacing:-0.015em;margin:0 0 8px;line-height:1.15}
+  .seclede{color:var(--ink2);max-width:52rem;margin:0 0 22px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  @media (max-width:820px){.grid2,.grid3{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px 24px}
+  .card h3{font-family:var(--serif);font-size:19px;font-weight:650;margin:0 0 8px;letter-spacing:-0.005em}
+  .card p{margin:8px 0;color:var(--ink2)}
+  .card p.leadp{color:var(--ink);font-size:16.5px}
+  .stat{font-family:var(--mono);font-weight:600;color:var(--ink)}
+  .callout{border-radius:12px;padding:18px 22px;margin:18px 0;border:1px solid transparent}
+  .callout.danger{background:var(--danger-soft);border-color:#e5b8b8;color:var(--ink)}
+  @media (prefers-color-scheme: dark){.callout.danger{border-color:#5a2727}}
+  .callout.warn{background:var(--warn-soft);border-color:#e6c9a8;color:var(--ink)}
+  @media (prefers-color-scheme: dark){.callout.warn{border-color:#5a3c20}}
+  .callout.info{background:var(--info-soft);border-color:#b9cfe4;color:var(--ink)}
+  @media (prefers-color-scheme: dark){.callout.info{border-color:#274a63}}
+  .callout.good{background:var(--accent-soft);border-color:#bcd4c3;color:var(--ink)}
+  @media (prefers-color-scheme: dark){.callout.good{border-color:#254734}}
+  .callout h4{margin:0 0 6px;font-family:var(--serif);font-weight:650;font-size:18px}
+  .callout p{margin:6px 0}
+  .callout .lbl{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600}
+  .callout.danger .lbl{color:var(--danger)}
+  .callout.warn .lbl{color:var(--warn)}
+  .callout.info .lbl{color:var(--info)}
+  .callout.good .lbl{color:var(--accent)}
+  table.data{width:100%;border-collapse:collapse;margin:16px 0;font-size:15px}
+  table.data caption{caption-side:top;text-align:left;font-family:var(--mono);font-size:12px;color:var(--ink3);padding-bottom:8px}
+  table.data th,table.data td{padding:12px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+  table.data thead th{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3);border-bottom:2px solid var(--line2)}
+  table.data tbody tr:last-child th,table.data tbody tr:last-child td{border-bottom:none}
+  table.data td.num{font-family:var(--mono);white-space:nowrap}
+  @media (max-width:640px){
+    table.data td.num{white-space:normal}
+    table.data{font-size:14px}
+    table.data th,table.data td{padding:10px 12px}
+  }
+  .num-big{font-family:var(--mono);font-size:26px;font-weight:600;color:var(--accent);letter-spacing:-0.01em}
+  .calc{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media (max-width:820px){.calc{grid-template-columns:1fr}}
+  .calc .card{position:relative}
+  .field{margin:12px 0}
+  .field label{display:block;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);margin-bottom:6px}
+  .field input{width:100%;background:var(--bg);border:1px solid var(--line2);border-radius:9px;color:var(--ink);font-size:19px;font-family:var(--mono);padding:11px 14px}
+  .field input:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+  .out{margin-top:14px;border-top:1px dashed var(--line2);padding-top:12px}
+  .out .rowline{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:4px 0}
+  details.rule{border:1px solid var(--line);border-radius:12px;background:var(--card);margin:12px 0;overflow:hidden}
+  details.rule summary{cursor:pointer;list-style:none;padding:18px 22px;font-family:var(--serif);font-size:18px;font-weight:650;display:flex;gap:12px;align-items:center;justify-content:space-between}
+  details.rule summary::-webkit-details-marker{display:none}
+  details.rule summary .tog{font-family:var(--mono);font-size:16px;color:var(--ink3);flex:none}
+  details.rule[open] summary{border-bottom:1px solid var(--line)}
+  details.rule .body{padding:18px 22px 22px}
+  details.rule .body p{margin:8px 0;color:var(--ink2)}
+  ol.check{margin:0;padding:0;list-style:none;counter-reset:c}
+  ol.check li{counter-increment:c;position:relative;padding:16px 20px 16px 66px;border:1px solid var(--line);border-radius:12px;background:var(--card);margin:10px 0}
+  ol.check li::before{content:counter(c,decimal-leading-zero);position:absolute;left:22px;top:16px;font-family:var(--mono);font-weight:600;font-size:15px;color:var(--accent)}
+  ol.check li p{margin:0}
+  .btn{appearance:none;border:none;cursor:pointer;background:var(--accent);color:var(--accent-ink);font-family:var(--sans);font-weight:600;font-size:15px;padding:12px 22px;border-radius:999px;display:inline-flex;align-items:center;gap:9px}
+  .btn:hover{filter:brightness(1.06)}
+  .btn svg{width:16px;height:16px}
+  .btnrow{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:18px 0}
+  .copied{font-family:var(--mono);font-size:13px;color:var(--accent);opacity:0;transition:opacity .25s}
+  .copied.show{opacity:1}
+  .sources{list-style:none;margin:14px 0 0;padding:0}
+  .sources li{padding:11px 0;border-bottom:1px solid var(--line);font-size:14.5px}
+  .sources li:last-child{border-bottom:none}
+  .sources .tag{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3);margin-right:8px;white-space:nowrap}
+  .sources .url{overflow-wrap:anywhere;font-family:var(--mono);font-size:12.5px}
+  .openq{display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:start;padding:12px 0;border-top:1px solid var(--line)}
+  .openq .q{font-size:18px}
+  .openq p{margin:2px 0}
+  .openq:first-of-type{border-top:none}
+  .foot{padding:26px 0 60px;font-family:var(--mono);font-size:12px;color:var(--ink3);border-top:1px solid var(--line);margin-top:10px}
+  .compare{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media (max-width:820px){.compare{grid-template-columns:1fr}}
+  .procon{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media (max-width:820px){.procon{grid-template-columns:1fr}}
+  .procon ul{margin:10px 0 0;padding:0;list-style:none}
+  .procon li{padding:10px 0;border-top:1px solid var(--line);font-size:15px}
+  .procon li:first-child{border-top:none}
+  .procon .h{font-family:var(--serif);font-size:20px;font-weight:650;display:flex;align-items:center;gap:10px}
+  .badge{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:999px;font-weight:600}
+  .badge.g{background:var(--accent-soft);color:var(--accent)}
+  .badge.r{background:var(--danger-soft);color:var(--danger)}
+  .progrow{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:22px;align-items:start}
+  @media (max-width:900px){.progrow{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <span class="kicker">Research brief</span>
+    <span class="edited">Researched Sep&nbsp;30,&nbsp;2026 &middot; IRS rules, mortgage guidelines &amp; Florida programs as of 2026</span>
+  </div>
+
+  <header class="hero">
+    <h1>401(k) Loan for Housing Deposits</h1>
+    <p class="lede">Borrowing limits, repayment rules, job-loss risk, how mortgage lenders treat the loan, and whether Florida’s down-payment programs make it unnecessary — for both a traditional down payment and rent-to-own / lease-option deposits. You said your plan allows “a one time loan” — singular, possibly once ever. This brief reports that exactly as stated; <strong>whether any second loan is ever available after repayment is UNVERIFIED</strong> — nailing that down is checklist question #1.</p>
+    <div class="dateline">
+      <span>Scope: IRS §72(p) mechanics</span><span>Mortgage underwriting: FHA · Fannie Mae · Freddie Mac</span><span>Florida: Hometown Heroes · Florida Assist</span>
+    </div>
+  </header>
+
+  <!-- ══════════ BOTTOM LINE ══════════ -->
+  <div class="verdict" id="bottomline">
+    <h2>Bottom line</h2>
+    <div class="rule"><span class="mark ok">✓</span><p><strong>Yes, a 401(k) loan can fund a down payment, closing costs, or a rent-to-own option fee.</strong> The IRS does not restrict what loan proceeds are used for — “the purpose of the loan … is irrelevant in determining whether the loan is permitted,” unlike hardship withdrawals. <span class="cite">IRS FAQs on plan loans, read live</span></p></div>
+    <div class="rule"><span class="mark warn">≤</span><p><strong>“Wait until the balance is big enough” means 2× the deposit in vested balance</strong> under the standard limit. Max loan = lesser of 50% of vested balance or $50,000 — so a $10,000 deposit needs $20,000 vested. (The IRS also allows an optional $10,000 small-balance exception — up to $10,000 borrowable even with less than $20,000 vested — but plans are <em>not</em> required to offer it; verify with yours.) <span class="cite">IRS FAQs, read live · IRS Retirement Topics: Loans</span></p></div>
+    <div class="rule"><span class="mark no">!</span><p><strong>The dominant risk is job loss — but there is an escape route.</strong> Most plans accelerate repayment at separation; without action, an unpaid balance becomes a taxable distribution — income tax plus a 10% early-withdrawal penalty if under 59½. <strong>The escape route:</strong> if the balance becomes a <strong>qualified plan loan offset</strong> at separation, you have until the <strong>tax-filing deadline (including extensions)</strong> for the year of the offset to roll that amount into an IRA or another eligible plan, avoiding its treatment as a taxable distribution. Miss that deadline and the taxes plus the 10% penalty stand. <span class="cite">IRS loan-offset rules</span></p></div>
+    <div class="rule"><span class="mark ok">✓</span><p><strong>Mortgage lenders treat it kindly:</strong> FHA, Fannie Mae, and Freddie Mac all allow the payment to be <em>excluded</em> from the debt-to-income ratio, because the loan is secured by your own asset. But the 401(k) balance counted as reserves must be reduced by the loan amount. <span class="cite">Fannie B3-6-05 · HUD 4000.1 · Freddie LP guide</span></p></div>
+    <div class="rule"><span class="mark warn">≠</span><p><strong>Florida down-payment assistance usually makes the 401(k) loan unnecessary.</strong> Hometown Heroes (up to $35,000 at 0%, no monthly payment) or Florida Assist ($10,000 at 0%, deferred) can cover a full FHA 3.5% down payment — a no-payment second mortgage strictly dominates a 5-year amortizing loan. Combining the two is permissible in principle, but confirm with your participating lender. <span class="cite">Florida Housing official page; lender summaries</span></p></div>
+  </div>
+
+  <!-- ══════════ §0 SIZING CALCULATORS ══════════ -->
+  <section class="block" id="sizing">
+    <span class="secno">Sizing the loan</span>
+    <h2>How much vested balance do you need?</h2>
+    <p class="seclede">Play with the numbers. These follow the IRS rule exactly: maximum loan = the lesser of 50% of vested balance or $50,000, with no outstanding loans in the last 12 months. Anything here assumes your plan actually allows loans and adopts the standard terms — verify with your administrator.</p>
+    <div class="calc">
+      <div class="card">
+        <h3>Deposit needed → balance required</h3>
+        <div class="field"><label for="dep">Deposit you need</label><input id="dep" type="number" min="0" max="50000" value="10000" inputmode="numeric" /></div>
+        <div class="out">
+          <div class="rowline"><span>Vested balance required</span><span class="num-big" id="need">$20,000</span></div>
+          <div class="rowline"><span>Loan you could take</span><span class="stat" id="loancan">$10,000</span></div>
+          <p class="cite" style="margin-top:10px">Needs 2× the deposit in <strong>vested</strong> balance (unvested employer match excluded) under the <strong>standard</strong> 50% limit; the optional IRS $10,000 floor (above caveat) and plan overlays may change this. IRS ceiling $50,000.</p>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Vested balance → max loan</h3>
+        <div class="field"><label for="vest">Your vested balance</label><input id="vest" type="number" min="0" value="20000" inputmode="numeric" /></div>
+        <div class="out">
+          <div class="rowline"><span>Maximum loan</span><span class="num-big" id="maxloan">$10,000</span></div>
+          <div class="rowline"><span>Of that, you keep invested</span><span class="stat" id="keep">$10,000</span></div>
+          <p class="cite" style="margin-top:10px">Lesser of 50% vested or $50,000. The prongs cross at $100,000 vested.</p>
+        </div>
+      </div>
+    </div>
+    <div class="callout warn">
+      <span class="lbl">Caveat</span>
+      <h4>The IRS’s optional $10,000 floor</h4>
+      <p>The IRS allows plans to permit borrowing the greater of $10,000 or 50% of vested balance (e.g., $12,000 vested → up to $10,000 loan). <strong>But plans are not required to include this exception.</strong> Don’t count on the floor without asking your administrator. <span class="cite">IRS Retirement Topics: Loans</span></p>
+    </div>
+    <div class="card" style="margin-top:18px">
+      <h3>Repayment estimator</h3>
+      <p>Standard amortization of your plan’s rate — interest rate mechanics from the report: the plan sets the rate (typically prime + 1–2%), repaid by payroll deduction each paycheck. Enter the rate on your loan paperwork.</p>
+      <div class="calc" style="margin-top:6px">
+        <div>
+          <div class="field"><label for="amt">Loan amount</label><input id="amt" type="number" min="0" value="10000" inputmode="numeric" /></div>
+          <div class="field"><label for="rate">Annual interest rate (%)</label><input id="rate" type="number" min="0" max="30" step="0.125" value="9" inputmode="decimal" /></div>
+          <div class="field"><label for="term">Repayment term (years)</label><input id="term" type="number" min="1" max="30" step="1" value="5" inputmode="numeric" /></div>
+        </div>
+        <div class="out" style="border-top:none;padding-top:0;align-self:start">
+          <div class="rowline"><span>Monthly payment</span><span class="num-big" id="paymo">$207.58</span></div>
+          <div class="rowline"><span>Total interest paid</span><span class="stat" id="inttot">$2,454.80</span></div>
+          <div class="rowline"><span>…goes back to</span><span class="stat">your own 401(k) account</span></div>
+          <p class="cite" style="margin-top:10px">Monthly estimate from level-payment amortization with at-least-quarterly payments. Most plans deduct every paycheck; your plan sets the exact schedule. Interest is credited to your account but paid with after-tax dollars.</p>
+        </div>
+      </div>
+    </div>
+    <div class="callout info">
+      <span class="lbl">Note</span>
+      <h4>Rent-to-own deposits get the standard 5-year term</h4>
+      <p>A lease-option or rent-to-own deposit is <em>not</em> a principal-residence purchase until the option is exercised and the purchase closes — so the plan cannot document the longer term. Expect the 5-year repayment rule for option fees. <span class="cite">Analysis grounded in the IRS documentation requirement</span></p>
+    </div>
+  </section>
+
+  <!-- ══════════ §1 MECHANICS ══════════ -->
+  <section class="block" id="mechanics">
+    <span class="secno">§1 · IRS mechanics</span>
+    <h2>The IRS rules for 401(k) loans</h2>
+    <p class="seclede">How much you can borrow, how the 12-month lookback would limit repeat borrowing <strong>if your plan permits another loan at all</strong>, repayment terms, and who sets (and receives) the interest. <span class="cite">IRS FAQs Regarding Loans — read live 2026-09-30</span></p>
+
+    <details class="rule" open>
+      <summary>Maximum amount <span class="tog">+</span></summary>
+      <div class="body">
+        <p>The plan maximum is <strong>(1) the greater of $10,000 or 50% of the vested account balance, or (2) $50,000 — whichever is less.</strong> A plan may set stricter limits, and a plan is not required to offer loans at all.</p>
+        <p>The $10,000 floor is optional: IRS guidance notes “plans are not required to include this exception.” <span class="cite">IRS Retirement Topics: Loans</span></p>
+        <table class="data">
+          <caption>Report table — vested balance needed to borrow, no prior loans in last 12 months</caption>
+          <thead><tr><th>Deposit needed</th><th>Vested balance required</th></tr></thead>
+          <tbody>
+            <tr><td class="num">$5,000</td><td class="num">$10,000</td></tr>
+            <tr><td class="num">$8,000</td><td class="num">$16,000</td></tr>
+            <tr><td class="num">$10,000</td><td class="num">$20,000</td></tr>
+            <tr><td class="num">$15,000</td><td class="num">$30,000</td></tr>
+            <tr><td class="num">$X (up to $50,000)</td><td class="num"><strong>2 × $X</strong> · cap flattens at $100,000 vested</td></tr>
+          </tbody>
+        </table>
+        <p>Only <strong>vested</strong> balance counts — unvested employer match or profit-sharing is excluded. Vesting schedules (cliff vs. graded) directly control when the balance becomes borrowable. <span class="cite">Motley Fool 401(k) loan rules</span></p>
+      </div>
+    </details>
+
+    <details class="rule">
+      <summary>The 12-month “highest outstanding balance” reduction <span class="tog">+</span></summary>
+      <div class="body">
+        <p>Any new loan <strong>plus</strong> all outstanding plan loans cannot exceed the plan maximum. For the $50,000 prong, you subtract: (highest outstanding balance of all plan loans during the 12 months ending the day before the new loan) minus (outstanding balance on the date of the new loan). <span class="cite">IRS FAQ Q8, worked example</span></p>
+        <p><strong>IRS example:</strong> $80,000 vested; borrowed $27,000 eight months ago; still owes $18,000. Ceiling = lesser of [$50,000 − ($27,000 − $18,000) = $41,000] or [50% × $80,000 = $40,000] → $40,000 total; new loan max = $40,000 − $18,000 = <strong>$22,000</strong>.</p>
+        <div class="callout warn" style="margin:14px 0 0">
+          <span class="lbl">Key nuance</span>
+          <p>Re-borrowing is conditional on your plan permitting <em>any</em> further loan at all: you said “a one time loan,” and whether a second loan is ever available after repayment is <strong>UNVERIFIED</strong>. Separately, paying off the old loan first barely helps — the IRS shows repaying the $18,000 would still cap the new loan at $23,000, because the $27,000 high-water mark counts for a full 12 months. So <strong>if</strong> your plan does allow another loan, after repayment you must still wait out the 12-month lookback to recover full capacity under the $50,000 prong (the 50%-of-vested prong is unaffected by history).</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="rule">
+      <summary>Repayment term &amp; the primary-residence exception <span class="tog">+</span></summary>
+      <div class="body">
+        <p><strong>General rule: repay within 5 years</strong>, in “substantially equal payments that include principal and interest,” paid at least quarterly (most plans do payroll deduction each paycheck). “Loan repayments are not plan contributions.”</p>
+        <p><strong>Primary-residence exception</strong> (IRC §72(p)(2)(B)(ii)): a loan taken to purchase the employee’s principal residence <em>may</em> be repaid over more than 5 years. In practice the plan decides whether to offer it and for how long — commonly up to 10–15 years (one example plan form offered 61–179 months). <span class="cite">Example plan loan application, Cumberland Heights</span></p>
+        <div class="callout info" style="margin:14px 0 0">
+          <span class="lbl">Strict condition</span>
+          <p>The IRS requires the plan sponsor to <strong>obtain documentation of the home purchase before approving</strong> a longer term — self-certification is not enough. Leave of absence: repayments may be suspended up to 1 year, but the 5-year term is <strong>not</strong> extended — missed payments must be made up. <span class="cite">IRS plan-sponsor guidance</span></p>
+        </div>
+      </div>
+    </details>
+
+    <details class="rule">
+      <summary>Interest rate — who sets it, who gets it <span class="tog">+</span></summary>
+      <div class="body">
+        <p>The <strong>plan administrator sets the rate</strong>; it must be “similar to what a participant might expect to receive from a financial institution.” Industry norm is <strong>prime rate + 1 to 2 percentage points</strong>. <span class="cite">IRS fix-it guide · Motley Fool · accountinginsights</span></p>
+        <p><strong>Who receives the interest: you</strong> — it is credited back to your own 401(k) account. But it is paid with <strong>after-tax dollars</strong> (payroll deduction), and the interest is taxed again on withdrawal in retirement.</p>
+      </div>
+    </details>
+
+    <details class="rule">
+      <summary>Your “one time loan” — possibly once ever <span class="tog">+</span></summary>
+      <div class="body">
+        <p>You said your plan allows <strong>“a one time loan”</strong> — singular. That may mean <strong>once ever</strong>, or it may merely mean one outstanding loan at a time with re-borrowing allowed after full repayment. <strong>Whether any second loan is ever available after repayment is UNVERIFIED</strong>: a one-loan limit is a <strong>plan design choice</strong> — the IRS itself permits multiple concurrent loans — and only your administrator can confirm what your plan means. If the loan is once ever, treat this as your single use and make the housing deposit count. <span class="cite">ASPPA: 401(k) Loans — Considerations for a Plan</span></p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ══════════ §2 JOB LOSS ══════════ -->
+  <section class="block" id="jobloss">
+    <span class="secno">§2 · The dominant risk</span>
+    <h2>Job loss / separation</h2>
+    <p class="seclede">What happens to the outstanding loan if you leave or lose the job. This is the single biggest tail risk of a 401(k) loan.</p>
+    <div class="callout danger">
+      <span class="lbl">Core risk</span>
+      <h4>No single IRS deadline — your plan sets the rule</h4>
+      <p>Plan practices at separation vary: some require <strong>immediate lump-sum payoff</strong>; some re-amortize to monthly direct payments (check/ACH) to the recordkeeper; some allow repayment through the end of the cure period. The borrower must check their plan’s rule — the IRS does not mandate one. <span class="cite">NAPA Net, Aug 2025</span></p>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <h3>Default → “deemed distribution”</h3>
+        <p class="leadp">If the loan isn’t repaid per plan terms, it defaults and the entire outstanding balance becomes a <strong>deemed distribution</strong>: taxable as ordinary income that year, <strong>plus the 10% additional tax if under 59½</strong> — with no exception for job loss.</p>
+        <p>A deemed distribution is <strong>not eligible for rollover</strong>. Mid-employment defaults get only a cure period to quarter-end — not the extended deadline. <span class="cite">IRS FAQ Q5/Q6 · IRS cure-period issue snapshot</span></p>
+      </div>
+      <div class="card">
+        <h3>Offset → the narrow grace period</h3>
+        <p class="leadp">If instead the plan <strong>offsets</strong> the unpaid balance against the account, that’s treated as an actual distribution and is <strong>eligible for rollover</strong>.</p>
+        <p>For a <strong>qualified plan loan offset</strong> — loan in good standing, offset due to severance or plan termination, within 12 months after severance — the deadline is extended to your <strong>tax-filing due date, including extensions</strong>, for the year of the offset (Tax Cuts and Jobs Act change). Other offsets keep the standard 60-day rollover rule — check the Form 1099-R. <span class="cite">IRS: Plan Loan Offsets · IRS FAQ Q7</span></p>
+      </div>
+    </div>
+    <div class="callout warn">
+      <span class="lbl">Also</span>
+      <h4>The offset shrinks your final payout</h4>
+      <p>The outstanding balance is subtracted from the account — you receive (or roll over) only the net vested balance minus the loan — and you permanently lose the tax-advantaged growth on the offset amount. <strong>Practical takeaway:</strong> the grace period is real but narrow. Anyone borrowing for a house deposit should have a backup source (emergency fund, or funds to roll over) to cover the loan if employment ends.</p>
+    </div>
+  </section>
+
+  <!-- ══════════ §3 HOUSING USES ══════════ -->
+  <section class="block" id="housing">
+    <span class="secno">§3 · Use of proceeds</span>
+    <h2>Using the loan for housing</h2>
+    <p class="seclede">Down payment, closing costs, earnest money, rent-to-own option fees, security deposits — the money is yours to use freely once disbursed.</p>
+    <div class="callout good">
+      <span class="lbl">The rule</span>
+      <h4>There are effectively no restrictions on use</h4>
+      <p>“As long as a plan provides for loans, <strong>the purpose of the loan</strong> or the participant’s ability to borrow the same amount elsewhere <strong>is irrelevant</strong> in determining whether the loan is permitted, unlike hardship withdrawals.” A 401(k) loan is <strong>not</strong> a withdrawal: no 10% penalty and no immediate tax, as long as the amount/duration/repayment rules are met. <span class="cite">IRS FAQs — read live</span></p>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <h3>Two indirect constraints</h3>
+        <p><strong>1.</strong> The &gt;5-year repayment term requires the plan to document an actual principal-residence <em>purchase</em> before approval — option fees and lease-option deposits don’t qualify for the extended term.</p>
+        <p><strong>2.</strong> Some plans cap loans to employee contributions only, or restrict purposes by design — confirm with the administrator. <span class="cite">ASPPA</span></p>
+      </div>
+      <div class="card">
+        <h3>Rent-to-own / lease-option deposits</h3>
+        <p><strong>Permitted as a use, on the standard term.</strong> The deposit/option fee itself is a perfectly allowable use of proceeds. But until the option is exercised and the purchase closes, the plan cannot document a “purchase” for the longer repayment term — so expect the 5-year rule.</p>
+        <p class="cite">Analysis grounded in the IRS documentation requirement above, not a separate IRS ruling on lease-options.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ §4 MORTGAGE ══════════ -->
+  <section class="block" id="mortgage">
+    <span class="secno">§4 · Mortgage-lender treatment</span>
+    <h2>FHA &amp; conventional underwriting</h2>
+    <p class="seclede">How FHA and conventional (Fannie Mae / Freddie Mac) underwriters treat an outstanding 401(k) loan: DTI, documentation, source of down payment, and reserves.</p>
+    <table class="data">
+      <caption>DTI treatment — the payment is generally EXCLUDED from monthly debt obligations</caption>
+      <thead><tr><th>Program</th><th>Rule</th><th>Documentation required</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Fannie Mae</strong> <span class="cite">Selling Guide B3-6-05, ed. 08/05/2026 — read live</span></td>
+          <td>“Loans Secured by Financial Assets”: lender is <strong>not required to include</strong> the payment in recurring monthly debt obligations, provided the lender obtains the loan instrument showing the 401(k) as collateral.</td>
+          <td>Copy of the loan instrument showing the financial asset as collateral.</td>
+        </tr>
+        <tr>
+          <td><strong>FHA</strong> <span class="cite">HUD Handbook 4000.1; mirror + corroborating lender write-ups</span></td>
+          <td>“Loans secured against deposited funds, where repayment may be obtained through extinguishing the asset and these funds are not included in calculating the Borrower’s assets, do not require consideration of repayment for qualifying purposes.” Applies in both TOTAL (automated) and manual underwriting.</td>
+          <td>Lender must verify/document the assets used to collateralize, the promissory note, and the loan proceeds; the corresponding asset must be reduced by the loan amount.</td>
+        </tr>
+        <tr>
+          <td><strong>Freddie Mac</strong> <span class="cite">Freddie LP correspondent underwriting guide (index)</span></td>
+          <td>“Payments on installment debts secured by financial assets in which repayment may be obtained by liquidating the asset, may be excluded from the monthly debt payment-to-income ratio for qualifying purposes, regardless of the payment amount or number of payments remaining.”</td>
+          <td>Underwriter documents monthly payment, asset value/ownership, and that the loan is secured by that asset; only assets exceeding the loan balance count as borrower funds.</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="grid2">
+      <div class="card">
+        <h3>Source of down payment</h3>
+        <p><strong>FHA</strong> treats a 401(k)-secured loan as a <strong>collateralized loan</strong> — an acceptable source of funds (including toward the borrower’s minimum required investment) with verification of collateral, note, and proceeds. Unsecured loans and credit-card advances are unacceptable. <span class="cite">HUD 4000.1 asset section, via mirror</span></p>
+        <p><strong>Fannie Mae:</strong> borrowed funds secured by an asset (explicitly including 401(k)s) are an acceptable source for down payment/closing costs with documentation of terms, transfer, and asset value/ownership — and the provider must not be a party to the transaction. <span class="cite">Cardinal Financial conventional guide, ch. 9</span></p>
+      </div>
+      <div class="card">
+        <h3>Reserves shrink</h3>
+        <p><strong>Yes — borrowing reduces countable reserves.</strong> Fannie Mae: if the borrower intends to use the same asset to satisfy reserve requirements, the lender must reduce the asset’s value by the loan proceeds and any related fees. FHA: “The Mortgagee must reduce the amount of the corresponding asset by the amount of the collateralized loan.” <span class="cite">Fannie B3-6-05 · HUD 4000.1</span></p>
+        <p class="leadp">A $60,000 401(k) with a $10,000 loan counts as $50,000 (minus fees) toward reserves.</p>
+      </div>
+    </div>
+    <div class="callout info">
+      <span class="lbl">Two things to know</span>
+      <h4>Not on the credit report · overlays may be stricter</h4>
+      <p>401(k) loans <strong>do not appear on credit reports</strong> — defaults have no credit-score consequences. The lender learns of the loan from your application disclosures, bank statements, or the loan paperwork itself. And individual lenders may impose <strong>overlays stricter than agency minimums</strong>. <span class="cite">Wharton PRC WP2014-01</span></p>
+    </div>
+  </section>
+
+  <!-- ══════════ §5 FLORIDA DPA ══════════ -->
+  <section class="block" id="dpa">
+    <span class="secno">§5 · Florida down-payment assistance</span>
+    <h2>Hometown Heroes &amp; Florida Assist</h2>
+    <p class="seclede">Florida’s assistance can cover the entire FHA 3.5% down payment — likely making a 401(k) loan unnecessary for an eligible buyer while funds last.</p>
+    <div class="progrow">
+      <div class="card">
+        <h3><span class="badge g">Hometown Heroes · 2026</span></h3>
+        <p class="leadp">Up to <span class="stat">5% of the first-mortgage amount (min $10,000, max $35,000)</span> for down payment + closing costs — <span class="stat">0% interest, non-amortizing, 30-year deferred second mortgage</span>. <strong>Not forgivable</strong>: due in full on sale, refinance, deed transfer, or loss of primary-residence occupancy.</p>
+        <p>Pairs with FHA, VA, USDA-RD, or conventional first mortgages at competitive rates, with reduced upfront fees and no origination/discount points. Eligibility: first-time, income-qualified buyers in eligible workforce occupations (health care, school staff, first responders, public safety/court, child care; military/veterans), full-time with a Florida-based employer, primary residence. Minimum 640 credit score; 2026 income limits at 150% of state/local median income.</p>
+        <p>2026 round: <strong>$50M opened 7/13/2026</strong>, first-come first-served; <strong>&gt;$35M remained as of 8/24/2026</strong>. <span class="cite">floridahousing.org — read live; WFLA; LinkedIn funding update 08-25-2026</span></p>
+      </div>
+      <div class="card">
+        <h3><span class="badge g">Florida Assist</span></h3>
+        <p class="leadp"><span class="stat">$10,000 at 0%, non-amortizing, no monthly payment</span> — deferred second mortgage; repayable on sale/refinance/transfer/loss of occupancy.</p>
+        <p>Pairs with FHFC first mortgages (FHA/VA/USDA/HFA Preferred/HFA Advantage); 640 FICO; first-time buyer; homebuyer education; county income/purchase-price limits; one-time use across FHFC programs.</p>
+        <p>The amortizing sibling, FL HLP, is now $12,500 at 3% over 30 years ≈ $52.70/mo — <strong>that</strong> payment does count in DTI. <span class="cite">FHFC board package 1/21/2022; 2026 program summaries</span></p>
+      </div>
+    </div>
+    <div class="callout good">
+      <span class="lbl">Comparison</span>
+      <h4>DPA usually wins for the down payment itself</h4>
+      <p>FHA requires 3.5% down: on a $285,700 purchase that’s $10,000 — exactly Florida Assist’s amount. HTH’s $10k–$35k band (avg. ~$16k on a ~$320k mortgage per 2026 lender data) covers the down payment plus a share of closing costs. A 0%-interest, no-payment second mortgage <strong>strictly dominates</strong> a 5-year amortizing 401(k) loan (prime+1–2%, payroll deduction, opportunity cost, job-loss risk) as a funding source.</p>
+      <p><strong>Caveats:</strong> DPA funds are finite and first-come-first-served; the buyer still needs earnest money, reserves, and must meet credit/income/occupation rules; <strong>the DPA is repayable debt, not a grant.</strong></p>
+    </div>
+    <div class="callout info">
+      <span class="lbl">Combination</span>
+      <h4>Can a 401(k) loan be combined with DPA?</h4>
+      <p>No Florida Housing source found prohibits a concurrent 401(k) loan. FHFC’s binding constraint is structural: <strong>the DPA must be paired with a Florida Housing first mortgage</strong> — the first mortgage’s agency rules then govern other borrowed funds. Under those rules, a 401(k)-secured loan is an acceptable, documented source of funds whose payment is excluded from DTI. So combining is permissible <strong>in principle</strong> — but check with the participating lender, since lender overlays and the DPA reservation process control the file.</p>
+      <p class="cite">No FHFC source explicitly addresses concurrent 401(k) loans — this is grounded inference, listed as an open question below.</p>
+    </div>
+  </section>
+
+  <!-- ══════════ §6 PROS / CONS ══════════ -->
+  <section class="block" id="proscons">
+    <span class="secno">§6 · Vs. saving cash separately</span>
+    <h2>Pros and cons</h2>
+    <p class="seclede">Where the 401(k) loan beats the alternatives — and where it loses. <span class="cite">Motley Fool · Porte Brown · Kiplinger · moneynav</span></p>
+    <div class="procon">
+      <div class="card">
+        <div class="h"><span class="badge g">Pros</span></div>
+        <ul>
+          <li><strong>No credit check or underwriting;</strong> fast access.</li>
+          <li>Interest (~prime+1%) <strong>paid to yourself</strong> vs. personal-loan rates of 6–36%.</li>
+          <li><strong>No 10% early-withdrawal penalty</strong> and no immediate tax (unlike a withdrawal); money is repaid into the account.</li>
+          <li>Default doesn’t touch the credit score and triggers no collections.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="h"><span class="badge r">Cons</span></div>
+        <ul>
+          <li><strong>Opportunity cost (the big one):</strong> borrowed money is out of the market for the loan term; the ~prime+1% “return” usually trails expected equity returns, and compounding losses snowball. One illustration: a $10,000 loan taken 20 years before retirement can forfeit $60,000+ of growth at assumed market returns.</li>
+          <li><strong>Double taxation (nuanced):</strong> repayments are made with after-tax dollars, then taxed again on withdrawal. Strictly, the clearly double-taxed piece is the <em>interest</em>. Popular summaries describe the whole repayment as effectively taxed twice — directionally true for interest, overstated for principal, but a real (if modest) drag. <span class="cite">Porte Brown · Kiplinger · Bogleheads forum</span></li>
+          <li><strong>Contribution suspension:</strong> many plans bar new contributions while a loan is outstanding; even when allowed, the payroll deduction often crowds contributions out — forfeiting the employer match, the pre-tax deduction (raising current taxable income), and compounding. <span class="cite">Kiplinger · moneynav</span></li>
+          <li><strong>Fees:</strong> origination fees are the norm (most common: $50, then $75); some plans add quarterly maintenance fees; typically deducted from proceeds or the account. <span class="cite">ASPPA</span></li>
+          <li><strong>Job-loss acceleration:</strong> the single biggest tail risk — unpaid balance becomes taxable + 10% penalty under 59½.</li>
+          <li><strong>Lost ERISA creditor protection</strong> on money outside the plan; <strong>non-deductible interest</strong> (unlike mortgage interest).</li>
+        </ul>
+      </div>
+    </div>
+    <div class="grid2" style="margin-top:18px">
+      <div class="card">
+        <h3>Scenarios where it beats the alternatives</h3>
+        <p><strong>Vs. outright withdrawal:</strong> almost always wins (no 10% penalty, money restored).</p>
+        <p><strong>Vs. Roth IRA:</strong> withdrawing <em>contributions</em> (not earnings) from a Roth IRA is tax- and penalty-free and creates no debt, job-loss risk, or DTI paperwork — it usually beats a 401(k) loan for small deposit amounts, at the cost of permanently removing that Roth space.</p>
+        <p><strong>Vs. waiting and saving:</strong> wins when the purchase is time-sensitive and the loan is short (bridge-like, repaid in 1–3 years) — e.g., locking a price/rate, avoiding rent, or avoiding PMI — <em>provided</em> contributions continue and the job is stable. The breakeven logic: the 401(k) loan wins if (consumer-loan interest saved) &gt; (lost investment earnings) — but that arithmetic ignores taxes and job-loss risk.</p>
+      </div>
+      <div class="card">
+        <h3>Where it loses</h3>
+        <p><strong>Loses to waiting/saving</strong> when the timeline is flexible.</p>
+        <p><strong>Loses to Florida DPA</strong> (0%, no payment) for eligible buyers.</p>
+        <p><strong>Loses to any low-rate secured borrowing</strong> that doesn’t jeopardize retirement.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ §7 VERDICT ══════════ -->
+  <section class="block" id="when">
+    <span class="secno">§7 · The verdict</span>
+    <h2>When it’s reasonable — and when it’s not</h2>
+    <div class="compare">
+      <div class="card" style="border-color:var(--accent)">
+        <div class="h procon"><span class="badge g">Reasonable when ALL hold</span></div>
+        <ul style="margin:10px 0 0;padding:0;list-style:none">
+          <li style="padding:10px 0;border-top:1px solid var(--line)">The deposit need is modest relative to vested balance (≤ 50%, leaving a cushion), and the loan is <strong>repaid in 1–3 years</strong> — minimizing time out of the market.</li>
+          <li style="padding:10px 0;border-top:1px solid var(--line)">The plan <strong>allows continued contributions + full employer match</strong> during repayment (verify in writing).</li>
+          <li style="padding:10px 0;border-top:1px solid var(--line)">Employment is stable and there’s a <strong>backup repayment source</strong> (emergency fund) if separation occurs.</li>
+          <li style="padding:10px 0;border-top:1px solid var(--line)">You’ve been <strong>denied or timed out of Florida DPA</strong> (Hometown Heroes / Florida Assist at 0% with no payment strictly dominates), and the alternative is high-rate debt or losing a time-sensitive purchase.</li>
+          <li style="padding:10px 0;border-top:1px solid var(--line)"><strong>For rent-to-own:</strong> the option fee is small, the path to exercising the purchase is concrete, and you accept the 5-year repayment term.</li>
+        </ul>
+      </div>
+      <div class="card" style="border-color:var(--danger)">
+        <div class="h procon"><span class="badge r">Not reasonable when</span></div>
+        <ul style="margin:10px 0 0;padding:0;list-style:none">
+          <li style="padding:10px 0;border-top:1px solid var(--line)">The plan <strong>suspends contributions/match</strong> during repayment — the true cost then includes lost match + lost deduction + lost compounding.</li>
+          <li style="padding:10px 0;border-top:1px solid var(--line)">The job or income is unstable — job-loss acceleration converts the loan into a taxable distribution + 10% penalty.</li>
+          <li style="padding:10px 0;border-top:1px solid var(--line)">You’d need the IRS $10,000 floor exception and the plan doesn’t offer it, or vesting leaves you short (don’t borrow against a balance you can’t actually reach).</li>
+          <li style="padding:10px 0;border-top:1px solid var(--line)">The timeline is flexible — saving cash separately avoids every risk above.</li>
+          <li style="padding:10px 0;border-top:1px solid var(--line)">You’re <strong>eligible for Hometown Heroes or Florida Assist</strong> while funds remain — take the 0%, no-payment second mortgage instead.</li>
+          <li style="padding:10px 0;border-top:1px solid var(--line)">It becomes a habit — if your plan ever permits re-borrowing at all (<strong>UNVERIFIED</strong>): serial 401(k) loans are the strongest predictor of retirement shortfalls (the 12-month lookback rule itself penalizes repeat borrowing).</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ §8 CHECKLIST ══════════ -->
+  <section class="block" id="checklist">
+    <span class="secno">§8 · Before you count on it</span>
+    <h2>Questions for your plan administrator</h2>
+    <p class="seclede">Your specific plan’s terms are unknowable from the web — this checklist is the instrument to get them. Bring it to your administrator (or HR/your plan’s service center) before counting on the loan.</p>
+    <ol class="check" id="checklistol">
+      <li><p><strong>Is this a once-ever loan, or one outstanding loan at a time with re-borrowing allowed after full repayment?</strong></p></li>
+      <li><p>Do you allow participant loans, and — if any further loan is ever permitted — is there a <strong>waiting period</strong> after payoff?</p></li>
+      <li><p>What is the <strong>minimum</strong> loan amount, the <strong>maximum</strong> (any cap below IRS limits), and is the <strong>$10,000 IRS floor exception</strong> adopted?</p></li>
+      <li><p>What are the <strong>origination and ongoing fees</strong>, and how are they charged?</p></li>
+      <li><p>What is the <strong>current interest rate and its formula</strong> (prime + ?)? Is interest credited to my account?</p></li>
+      <li><p>May I <strong>continue pre-tax contributions and receive the full employer match</strong> while repaying?</p></li>
+      <li><p>Do you offer a <strong>&gt;5-year principal-residence term</strong>, what is the maximum, and what <strong>purchase documentation</strong> do you require <em>before</em> approval? (Confirm: option fees/lease-option deposits get the standard 5-year term.)</p></li>
+      <li><p>What happens at <strong>separation</strong> — immediate full payoff, continued direct payments, or a cure period? How long?</p></li>
+      <li><p>Is <strong>spousal consent</strong> required? Which <strong>investments are sold</strong> to fund the loan, and how are repayments reinvested?</p></li>
+      <li><p>How quickly are funds <strong>disbursed</strong>, and what <strong>loan documents</strong> will I receive (my mortgage lender will need the loan instrument)?</p></li>
+    </ol>
+    <div class="btnrow">
+      <button class="btn" id="copybtn" type="button">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5.5" y="5.5" width="9" height="9" rx="1.5"/><path d="M10.5 5.5v-3a1 1 0 0 0-1-1h-7a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h3"/></svg>
+        Copy checklist
+      </button>
+      <span class="copied" id="copiedmsg">Copied — ready to paste into your notes</span>
+    </div>
+  </section>
+
+  <!-- ══════════ §9 OPEN QUESTIONS ══════════ -->
+  <section class="block" id="open">
+    <span class="secno">§9 · Open questions</span>
+    <h2>Could not verify</h2>
+    <div class="openq"><span class="q">?</span><p><strong>Freddie Mac primary source:</strong> the financial-asset-secured DTI exclusion is documented via a Freddie LP correspondent underwriting guide, not via guide.freddiemac.com directly. Fannie Mae B3-6-05 and HUD 4000.1 provisions were verified from primary or near-primary text.</p></div>
+    <div class="openq"><span class="q">?</span><p><strong>HUD 4000.1 direct:</strong> FHA quotes were verified against a compliance-site mirror of the handbook text plus multiple corroborating lender write-ups; hud.gov itself was not opened. Wording is consistent across all mirrors found.</p></div>
+    <div class="openq"><span class="q">?</span><p><strong>FHFC combination rules:</strong> no Florida Housing source was found that explicitly addresses concurrent 401(k) loans; the permissibility conclusion rests on (a) FHFC requiring only that DPA pair with an FHFC first mortgage and (b) agency guidelines accepting 401(k)-secured loans as a documented source of funds. A participating FHFC lender should confirm on the specific file.</p></div>
+    <div class="openq"><span class="q">?</span><p><strong>2026 HTH income limits by county and remaining funds:</strong> verified the program page and the 7/13/2026 $50M round; county-level 2026 income tables and live fund balances change frequently — check floridahousing.org / eHousingPlus at application time.</p></div>
+    <div class="openq"><span class="q">?</span><p><strong>Your plan’s specific terms</strong> — notably whether your “one time loan” is once ever or re-borrowable (<strong>UNVERIFIED</strong>), plus fees, contribution suspension, separation policy: unknowable from the web — the checklist above is the instrument to get them.</p></div>
+  </section>
+
+  <!-- ══════════ §10 SOURCES ══════════ -->
+  <section class="block" id="sources">
+    <span class="secno">§10 · Sources</span>
+    <h2>Every claim, sourced</h2>
+    <p class="seclede">Each entry was read live or pulled from the research index on 2026-09-30. “Live” = the page was opened and read in full; “index” = sourced from indexed snippets/correspondent text.</p>
+    <ul class="sources">
+      <li><span class="tag">IRS · live</span> <strong>Retirement Plans FAQs Regarding Loans</strong> <span class="cite">borrow limits, 12-month lookback, 5-year term, purpose irrelevant</span><br/><span class="url"><a href="https://www.irs.gov/retirement-plans/retirement-plans-faqs-regarding-loans" target="_blank" rel="noopener">https://www.irs.gov/retirement-plans/retirement-plans-faqs-regarding-loans</a></span></li>
+      <li><span class="tag">IRS · index</span> <strong>Retirement Topics: Loans</strong> <span class="cite">$10,000 exception is optional for plans</span><br/><span class="url"><a href="https://www.irs.gov/retirement-plans/plan-participant-employee/retirement-topics-loans" target="_blank" rel="noopener">https://www.irs.gov/retirement-plans/plan-participant-employee/retirement-topics-loans</a></span></li>
+      <li><span class="tag">IRS · index</span> <strong>401(k) Plan Fix-It Guide: Participant Loans</strong> <span class="cite">rate must mirror a financial institution’s</span><br/><span class="url"><a href="https://www.irs.gov/retirement-plans/401k-plan-fix-it-guide-participant-loans-dont-conform-to-the-requirements-of-the-plan-document-and-irc-section-72p" target="_blank" rel="noopener">https://www.irs.gov/retirement-plans/401k-plan-fix-it-guide-participant-loans-dont-conform-to-the-requirements-of-the-plan-document-and-irc-section-72p</a></span></li>
+      <li><span class="tag">IRS · index</span> <strong>It’s Up to Plan Sponsors to Track Loans, Hardship Distributions</strong> <span class="cite">documentation required before &gt;5-year term</span><br/><span class="url"><a href="https://www.irs.gov/retirement-plans/its-up-to-plan-sponsors-to-track-loans-hardship-distributions" target="_blank" rel="noopener">https://www.irs.gov/retirement-plans/its-up-to-plan-sponsors-to-track-loans-hardship-distributions</a></span></li>
+      <li><span class="tag">IRS · index</span> <strong>Plan Loan Offsets</strong> <span class="cite">qualified plan loan offset grace periods</span><br/><span class="url"><a href="https://www.irs.gov/retirement-plans/plan-loan-offsets" target="_blank" rel="noopener">https://www.irs.gov/retirement-plans/plan-loan-offsets</a></span></li>
+      <li><span class="tag">IRS · index</span> <strong>Issue Snapshot: Plan Loan Cure Period</strong><br/><span class="url"><a href="https://www.irs.gov/retirement-plans/issue-snapshot-plan-loan-cure-period" target="_blank" rel="noopener">https://www.irs.gov/retirement-plans/issue-snapshot-plan-loan-cure-period</a></span></li>
+      <li><span class="tag">Fannie Mae · live</span> <strong>Selling Guide B3-6-05, Monthly Debt Obligations, ed. 08/05/2026</strong> <span class="cite">loans secured by financial assets excluded from DTI; reserves reduced by loan</span><br/><span class="url"><a href="https://selling-guide.fanniemae.com/sel/b3-6-05/monthly-debt-obligations" target="_blank" rel="noopener">https://selling-guide.fanniemae.com/sel/b3-6-05/monthly-debt-obligations</a></span></li>
+      <li><span class="tag">HUD · mirror</span> <strong>HUD Handbook 4000.1 II.B · credit requirements (TOTAL)</strong> <span class="cite">secured-against-deposited-funds loans need no DTI consideration</span><br/><span class="url"><a href="http://claudeforcompliance.com/downloads/regs/hud-4000-1-ii-b-credit-requirements-total.pdf" target="_blank" rel="noopener">http://claudeforcompliance.com/downloads/regs/hud-4000-1-ii-b-credit-requirements-total.pdf</a></span></li>
+      <li><span class="tag">HUD · mirror</span> <strong>HUD Handbook 4000.1 II.C · asset requirements (manual)</strong> <span class="cite">collateralized loans acceptable source of funds</span><br/><span class="url"><a href="http://claudeforcompliance.com/downloads/regs/hud-4000-1-ii-c-asset-requirements-manual.pdf" target="_blank" rel="noopener">http://claudeforcompliance.com/downloads/regs/hud-4000-1-ii-c-asset-requirements-manual.pdf</a></span></li>
+      <li><span class="tag">Index</span> <strong>FHA News Blog — FHA Home Loan Approval &amp; Debt Ratios</strong> <span class="cite">corroborating write-up of 4000.1 rules</span><br/><span class="url"><a href="https://www.fhanewsblog.com/fha-home-loan-approval-debt-ratios/" target="_blank" rel="noopener">https://www.fhanewsblog.com/fha-home-loan-approval-debt-ratios/</a></span></li>
+      <li><span class="tag">Freddie Mac · correspondent guide</span> <strong>Freddie LP Open Access underwriting guide</strong> <span class="cite">secured installment debts excluded from DTI</span><br/><span class="url"><a href="https://titanml.com/wp-content/uploads/guidelines/IMPAC/Conventional/LP-Open-Access-c.pdf" target="_blank" rel="noopener">https://titanml.com/wp-content/uploads/guidelines/IMPAC/Conventional/LP-Open-Access-c.pdf</a></span></li>
+      <li><span class="tag">Index</span> <strong>Cardinal Financial conventional lending guide, ch. 9</strong> <span class="cite">401(k)-secured borrowed funds as source of funds</span><br/><span class="url"><a href="https://octane.cardinalfinancialwholesale.com/wp-content/themes/octane-cfw/assets/pdf/lending-guide/chapter_09.pdf?v=1741011846" target="_blank" rel="noopener">https://octane.cardinalfinancialwholesale.com/wp-content/themes/octane-cfw/assets/pdf/lending-guide/chapter_09.pdf?v=1741011846</a></span></li>
+      <li><span class="tag">Florida Housing · live</span> <strong>Hometown Heroes Program</strong> <span class="cite">official program page</span><br/><span class="url"><a href="https://www.floridahousing.org/live-local-act/hometown-heroes-program" target="_blank" rel="noopener">https://www.floridahousing.org/live-local-act/hometown-heroes-program</a></span></li>
+      <li><span class="tag">Index</span> <strong>FHFC Board Package 1/21/2022 — Florida Assist terms</strong><br/><span class="url"><a href="https://floridahousing.org/docs/default-source/data-docs-and-reports/boardpackages/2022/january-21/information-items.pdf?sfvrsn=8b8bf67b_2" target="_blank" rel="noopener">https://floridahousing.org/docs/default-source/data-docs-and-reports/boardpackages/2022/january-21/information-items.pdf?sfvrsn=8b8bf67b_2</a></span></li>
+      <li><span class="tag">Index</span> <strong>FL FY2026-27 conforming bill text — Hometown Heroes statute</strong><br/><span class="url"><a href="http://www.freedomfirstbudget.com/content/Current/reports/Florida%20Hometown%20Hero%20Program.pdf" target="_blank" rel="noopener">http://www.freedomfirstbudget.com/content/Current/reports/Florida Hometown Hero Program.pdf</a></span></li>
+      <li><span class="tag">Index</span> <strong>LendingTree — Florida First-Time Homebuyer Programs 2026</strong><br/><span class="url"><a href="https://www.lendingtree.com/home/mortgage/florida-first-time-homebuyer-programs/" target="_blank" rel="noopener">https://www.lendingtree.com/home/mortgage/florida-first-time-homebuyer-programs/</a></span></li>
+      <li><span class="tag">Index</span> <strong>Top Orlando Living — Orlando First-Time Home Buyer Programs</strong><br/><span class="url"><a href="https://toporlandoliving.com/featured/orlando-first-time-home-buyer-programs/" target="_blank" rel="noopener">https://toporlandoliving.com/featured/orlando-first-time-home-buyer-programs/</a></span></li>
+      <li><span class="tag">Index</span> <strong>Florida Home Finder — Down Payment Assistance: Florida Programs 2026</strong><br/><span class="url"><a href="https://www.floridahomefinder.com/blog/down-payment-assistance-florida-programs-2026/" target="_blank" rel="noopener">https://www.floridahomefinder.com/blog/down-payment-assistance-florida-programs-2026/</a></span></li>
+      <li><span class="tag">Index</span> <strong>mortgage-info.com — Florida First-Time Homebuyer Programs 2026</strong><br/><span class="url"><a href="https://www.mortgage-info.com/blog/florida-first-time-homebuyer-programs-2026" target="_blank" rel="noopener">https://www.mortgage-info.com/blog/florida-first-time-homebuyer-programs-2026</a></span></li>
+      <li><span class="tag">Index</span> <strong>WFLA — Florida Hometown Heroes reopens with up to $35k (7/14/2026)</strong><br/><span class="url"><a href="https://wflanews.iheart.com/featured/florida-news/content/2026-07-14-florida-hometown-heroes-program-reopens-with-up-to-35k-for-homebuyers/" target="_blank" rel="noopener">https://wflanews.iheart.com/featured/florida-news/content/2026-07-14-florida-hometown-heroes-program-reopens-with-up-to-35k-for-homebuyers/</a></span></li>
+      <li><span class="tag">Index</span> <strong>LinkedIn — Hometown Heroes funding update 08-25-2026</strong><br/><span class="url"><a href="https://www.linkedin.com/pulse/florida-hometown-heroes-funding-update-08-25-2026-osmany-garcia-vzi8e" target="_blank" rel="noopener">https://www.linkedin.com/pulse/florida-hometown-heroes-funding-update-08-25-2026-osmany-garcia-vzi8e</a></span></li>
+      <li><span class="tag">Index</span> <strong>Motley Fool — 401(k) Loan Rules</strong> <span class="cite">interest mechanics, double taxation, default</span><br/><span class="url"><a href="https://www.fool.com/retirement/plans/401k/loan/?source=askdougpancakes" target="_blank" rel="noopener">https://www.fool.com/retirement/plans/401k/loan/?source=askdougpancakes</a></span></li>
+      <li><span class="tag">Index</span> <strong>Porte Brown — 401(k) Loans: Pros and Cons</strong> <span class="cite">updated ~Sept 2026</span><br/><span class="url"><a href="https://www.portebrown.com/newsblog-archive/401-k-loans-yay-or-nay" target="_blank" rel="noopener">https://www.portebrown.com/newsblog-archive/401-k-loans-yay-or-nay</a></span></li>
+      <li><span class="tag">Index</span> <strong>Kiplinger — 5 Reasons 401(k) Loans Are a Bad Idea</strong><br/><span class="url"><a href="https://www.kiplinger.com/article/investing/t001-c032-s014-5-reasons-401-k-loans-are-a-bad-idea.html" target="_blank" rel="noopener">https://www.kiplinger.com/article/investing/t001-c032-s014-5-reasons-401-k-loans-are-a-bad-idea.html</a></span></li>
+      <li><span class="tag">Index</span> <strong>Bogleheads forum — double-taxation nuance</strong><br/><span class="url"><a href="https://www.bogleheads.org/forum/viewtopic.php?p=6223353" target="_blank" rel="noopener">https://www.bogleheads.org/forum/viewtopic.php?p=6223353</a></span></li>
+      <li><span class="tag">Index</span> <strong>moneynav — 401(k) loan pros/cons explainer</strong><br/><span class="url"><a href="https://moneynav.com/blog/contemplating-a-401k-loan" target="_blank" rel="noopener">https://moneynav.com/blog/contemplating-a-401k-loan</a></span></li>
+      <li><span class="tag">Index</span> <strong>ASPPA — 401(k) Loans: Considerations for a Plan</strong> <span class="cite">fees, one-loan design</span><br/><span class="url"><a href="https://www.asppa-net.org/news/2018/10/401k-loans-considerations-plan/" target="_blank" rel="noopener">https://www.asppa-net.org/news/2018/10/401k-loans-considerations-plan/</a></span></li>
+      <li><span class="tag">Index</span> <strong>Wharton Pension Research Council WP2014-01</strong> <span class="cite">minimum loan norms; loans not on credit reports</span><br/><span class="url"><a href="https://pensionresearchcouncil.wharton.upenn.edu/wp-content/uploads/2015/09/WP2014-01-Lu-OSM-Utkus-Young-2.12.20144.pdf" target="_blank" rel="noopener">https://pensionresearchcouncil.wharton.upenn.edu/wp-content/uploads/2015/09/WP2014-01-Lu-OSM-Utkus-Young-2.12.20144.pdf</a></span></li>
+      <li><span class="tag">Index</span> <strong>Example plan loan application — Cumberland Heights 401(k)</strong> <span class="cite">$50 fee, $1,000 min, residence-loan terms</span><br/><span class="url"><a href="https://www.chconnect.net/pdfs/hr-forms/Loan%20App%201012.pdf" target="_blank" rel="noopener">https://www.chconnect.net/pdfs/hr-forms/Loan App 1012.pdf</a></span></li>
+      <li><span class="tag">Index</span> <strong>NAPA Net — How Do Plans Handle Loan Repayments After Separation (8/2025)</strong><br/><span class="url"><a href="https://www.napa-net.org/news/2025/8/how-do-plans-handle-loan-repayments-after-separation-from-service/" target="_blank" rel="noopener">https://www.napa-net.org/news/2025/8/how-do-plans-handle-loan-repayments-after-separation-from-service/</a></span></li>
+      <li><span class="tag">Index</span> <strong>accountinginsights — job-loss &amp; interest explainers</strong><br/><span class="url"><a href="https://accountinginsights.org/what-happens-if-you-have-a-401k-loan-and-lose-your-job/" target="_blank" rel="noopener">https://accountinginsights.org/what-happens-if-you-have-a-401k-loan-and-lose-your-job/</a></span><br/><span class="url"><a href="https://accountinginsights.org/understanding-401k-loan-interest-and-repayment-strategies/" target="_blank" rel="noopener">https://accountinginsights.org/understanding-401k-loan-interest-and-repayment-strategies/</a></span></li>
+    </ul>
+  </section>
+
+  <footer class="foot">
+    Research brief compiled from the deep-research report dated 2026-09-30. Everything on this page traces to the linked sources; no plan-specific facts are included. Programs, funding levels, and handbook editions change — verify with your plan administrator and participating lenders before acting.
+  </footer>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var $ = function(id){ return document.getElementById(id); };
+  function money(n){
+    if(!isFinite(n)) return "—";
+    return "$" + Math.round(n).toLocaleString("en-US");
+  }
+  function cents(n){
+    if(!isFinite(n)) return "—";
+    return "$" + n.toLocaleString("en-US",{minimumFractionDigits:2, maximumFractionDigits:2});
+  }
+
+  /* Deposit needed → balance required */
+  function updateDeposit(){
+    var d = Math.max(0, parseFloat($("dep").value) || 0);
+    var need = d > 0 ? d * 2 : 0;
+    var loan = Math.min(d, 50000);
+    $("need").textContent = money(need);
+    $("loancan").textContent = money(loan);
+    if(d > 50000){
+      $("need").textContent = "Not allowed";
+      $("loancan").textContent = "Max loan is $50,000";
+    }
+  }
+  /* Vested balance → max loan */
+  function updateVested(){
+    var v = Math.max(0, parseFloat($("vest").value) || 0);
+    var maxl = Math.min(v * 0.5, 50000);
+    $("maxloan").textContent = money(maxl);
+    $("keep").textContent = money(v - maxl);
+  }
+  /* Repayment estimator — standard level amortization, monthly */
+  function updatePayment(){
+    var p = Math.max(0, parseFloat($("amt").value) || 0);
+    var r = Math.max(0, parseFloat($("rate").value) || 0);
+    var t = Math.max(0, parseFloat($("term").value) || 0);
+    var n = Math.round(t * 12);
+    var pay = 0;
+    if(n > 0 && p > 0){
+      if(r <= 0){ pay = p / n; }
+      else {
+        var i = r / 100 / 12;
+        var f = Math.pow(1 + i, n);
+        pay = p * i * f / (f - 1);
+      }
+    }
+    $("paymo").textContent = cents(pay);
+    $("inttot").textContent = cents(pay * n - p);
+  }
+  $("dep").addEventListener("input", updateDeposit);
+  $("vest").addEventListener("input", updateVested);
+  $("amt").addEventListener("input", updatePayment);
+  $("rate").addEventListener("input", updatePayment);
+  $("term").addEventListener("input", updatePayment);
+  updateDeposit(); updateVested(); updatePayment();
+
+  /* details toggles */
+  Array.prototype.forEach.call(document.querySelectorAll("details.rule"), function(d){
+    var tog = d.querySelector(".tog");
+    function sync(){ tog.textContent = d.open ? "–" : "+"; }
+    d.addEventListener("toggle", sync); sync();
+  });
+
+  /* copy checklist */
+  $("copybtn").addEventListener("click", function(){
+    var items = [];
+    document.querySelectorAll("#checklistol li p").forEach(function(p){
+      items.push(p.textContent.replace(/\s+/g," ").trim());
+    });
+    var text = "Questions for my 401(k) plan administrator (from the 401(k) loan research brief, 2026-09-30):\n\n" +
+      items.map(function(t,i){ return (i+1) + ". " + t; }).join("\n");
+    function done(){
+      var m = $("copiedmsg");
+      m.classList.add("show");
+      setTimeout(function(){ m.classList.remove("show"); }, 2600);
+    }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(done, done);
+    } else {
+      var ta = document.createElement("textarea");
+      ta.value = text; document.body.appendChild(ta); ta.select();
+      try { document.execCommand("copy"); } catch(e){}
+      document.body.removeChild(ta); done();
+    }
+  });
+})();
+</script>
+</body>
+</html>
