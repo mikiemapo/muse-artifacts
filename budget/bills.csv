@@ -1,0 +1,12 @@
+name,amount_dollars,due_date,status,priority,category,account,note,recurring
+"State Farm",118.4,2026-08-28,needs_attention,1,Insurance,BofA,"Past due. Revisit after Oct 5; lapse risk.",monthly
+"Mazda Financial",262.14,2026-09-29,needs_attention,2,Car,BofA,"Pay from the Oct 9 paycheck. Monthly payment is $676.07; protect $338 from each check.",monthly
+"HFD dental",24.56,2026-09-29,needs_attention,3,Health,BofA,"Auto-debit failed. Balance: $181.76. Catch up after Oct 5.",monthly
+"Split Pay · first half",524.99,2026-10-01,covered,4,Rent,FAIRWINDS,"Secured through the dedicated FAIRWINDS account.",monthly
+"iCloud+ 200GB",2.99,2026-09-30,needs_attention,5,Subscription,BofA,"Payment information needs attention.",monthly
+"Disney+ Basic",11.99,2026-10-07,pending,6,Subscription,BofA,"Renews monthly.",monthly
+"Google AI Plus",4.99,2026-10-09,pending,7,Subscription,BofA,"Renews monthly.",monthly
+Verizon,26.7,2026-10-10,pending,8,Phone,BofA,"Auto Pay scheduled.",monthly
+"Split Pay · second half",500.0,2026-10-15,pending,9,Rent,BofA,"Second rent installment, about two weeks after the first.",monthly
+"Microsoft 365",9.99,,needs_attention,10,Subscription,BofA,"Billing problem notice; verify in the App Store.",monthly
+Enterprise,65.27,,needs_attention,12,Collections,BofA,"60 days past due; rental privileges suspended until paid.",none
