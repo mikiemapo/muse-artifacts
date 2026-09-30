@@ -1,0 +1,8 @@
+{
+  "runtime": "static",
+  "platformVersion": 15,
+  "entry": "index.html",
+  "name": "401(k) Loan for Housing Deposits",
+  "slug": "401-k-loan-for-housing-deposits",
+  "managedCronJobs": []
+}
