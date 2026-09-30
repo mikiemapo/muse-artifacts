@@ -1,0 +1,970 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="data:," />
+<title>Rent vs. Rent-to-Own: The Clear View</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,500;0,600;0,700;1,500&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; text-size-adjust: 100%; }
+  :root {
+    color-scheme: light dark;
+    --bg: #ffffff;
+    --surface: #f5f7f8;
+    --surface-2: #ebeff2;
+    --ink: #191d21;
+    --muted: #5c656e;
+    --faint: #8b939c;
+    --line: #dde3e8;
+    --accent: #0d7a4e;
+    --accent-strong: #09613e;
+    --on-accent: #ffffff;
+    --warn: #96600a;
+    --warn-bg: #fdf2dd;
+    --warn-line: #e8cf9a;
+    --danger: #b03a22;
+    --danger-bg: #fdeeea;
+    --danger-line: #f0b8ab;
+    --ok-bg: #e9f6ef;
+    --ok-line: #aad6bf;
+    --num: #132a22;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0c1013;
+      --surface: #13191d;
+      --surface-2: #1b2329;
+      --ink: #e9edf1;
+      --muted: #9ba5ae;
+      --faint: #6d767f;
+      --line: #253037;
+      --accent: #46c98b;
+      --accent-strong: #2fae74;
+      --on-accent: #062418;
+      --warn: #e0a23c;
+      --warn-bg: #221a0c;
+      --warn-line: #5b4520;
+      --danger: #e0725c;
+      --danger-bg: #231210;
+      --danger-line: #5c2520;
+      --ok-bg: #0f231b;
+      --ok-line: #214f39;
+      --num: #e9f3ed;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation: none !important; transition: none !important; }
+  }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+  }
+  .wrap { max-width: 1060px; margin: 0 auto; padding: 0 20px 90px; }
+  .dateline {
+    margin: 34px 0 10px;
+    font-size: 13px; letter-spacing: .06em; text-transform: uppercase;
+    color: var(--faint); font-weight: 600;
+  }
+  h1 {
+    font-family: Bitter, Georgia, "Times New Roman", serif;
+    font-weight: 700; font-size: clamp(28px, 5.2vw, 44px);
+    line-height: 1.18; letter-spacing: -0.01em; margin: 0 0 14px;
+    max-width: 22ch;
+  }
+  .lede { font-size: 19px; color: var(--muted); max-width: 62ch; margin: 0 0 22px; }
+  .lede strong { color: var(--ink); }
+  .toc {
+    display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 10px; padding: 0 0 6px;
+    border-bottom: 1px solid var(--line);
+  }
+  .toc a {
+    font-size: 14px; font-weight: 600; color: var(--muted); text-decoration: none;
+    padding: 7px 13px; border: 1px solid var(--line); border-radius: 999px;
+    background: var(--surface); transition: color .15s, border-color .15s;
+  }
+  .toc a:hover { color: var(--accent-strong); border-color: var(--accent); }
+  section.block { margin-top: 56px; scroll-margin-top: 18px; }
+  h2 {
+    font-family: Bitter, Georgia, serif; font-weight: 700;
+    font-size: clamp(23px, 3.4vw, 31px); line-height: 1.25; margin: 0 0 8px;
+  }
+  h3 {
+    font-family: Bitter, Georgia, serif; font-weight: 600; font-size: 19px;
+    margin: 0 0 8px; line-height: 1.35;
+  }
+  .sec-sub { color: var(--muted); margin: 0 0 20px; max-width: 70ch; }
+  a { color: var(--accent-strong); text-decoration: underline; text-underline-offset: 2px; }
+  @media (prefers-color-scheme: dark) { a { color: var(--accent); } }
+  p { margin: 0 0 12px; }
+  ul, ol { margin: 0 0 14px; padding-left: 22px; }
+  li { margin-bottom: 7px; }
+  li::marker { color: var(--accent); }
+  .num { font-variant-numeric: tabular-nums; font-weight: 700; color: var(--num); }
+  .caveat { color: var(--faint); font-size: 14.5px; }
+  .caption { font-size: 14px; color: var(--muted); margin-top: 8px; max-width: 75ch; }
+
+  /* verdict cards */
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr)); gap: 14px; margin: 18px 0; }
+  .card {
+    border: 1px solid var(--line); border-radius: 12px; padding: 20px 20px 16px;
+    background: var(--surface); display: flex; flex-direction: column; gap: 10px;
+  }
+  .card p { margin: 0; font-size: 15.5px; }
+  .card .foot { font-size: 13.5px; color: var(--muted); border-top: 1px dashed var(--line); padding-top: 10px; margin-top: 4px; }
+  .badge {
+    align-self: flex-start; font-size: 12px; font-weight: 700; letter-spacing: .07em;
+    text-transform: uppercase; padding: 4px 11px; border-radius: 999px;
+    border: 1px solid transparent;
+  }
+  .badge.closed { color: var(--danger); background: var(--danger-bg); border-color: var(--danger-line); }
+  .badge.later  { color: var(--warn); background: var(--warn-bg); border-color: var(--warn-line); }
+  .badge.path   { color: var(--accent-strong); background: var(--ok-bg); border-color: var(--ok-line); }
+  @media (prefers-color-scheme: dark) { .badge.path { color: var(--accent); } }
+  .nums-strip {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr));
+    gap: 10px; margin: 16px 0 4px;
+  }
+  .tile {
+    border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px;
+    background: var(--bg);
+  }
+  .tile .t-v { font-family: Bitter, Georgia, serif; font-weight: 700; font-size: 23px; color: var(--num); font-variant-numeric: tabular-nums; }
+  .tile .t-l { font-size: 13px; color: var(--muted); line-height: 1.4; margin-top: 2px; }
+
+  /* warnings & notes */
+  .callout {
+    border-radius: 10px; padding: 14px 18px; margin: 14px 0;
+    border: 1px solid var(--line); background: var(--surface);
+  }
+  .callout.warn { background: var(--warn-bg); border-color: var(--warn-line); }
+  .callout.danger { background: var(--danger-bg); border-color: var(--danger-line); }
+  .callout.ok { background: var(--ok-bg); border-color: var(--ok-line); }
+  .callout .k { font-weight: 700; display: block; margin-bottom: 4px; }
+  .callout.warn .k { color: var(--warn); }
+  .callout.danger .k { color: var(--danger); }
+  .callout.ok .k { color: var(--accent-strong); }
+  @media (prefers-color-scheme: dark) { .callout.ok .k { color: var(--accent); } }
+  .callout p:last-child { margin-bottom: 0; }
+
+  /* city toggle */
+  .seg {
+    display: inline-flex; gap: 4px; background: var(--surface-2);
+    border: 1px solid var(--line); border-radius: 14px; padding: 5px; margin: 8px 0 22px;
+    max-width: 100%; flex-wrap: wrap;
+  }
+  .seg button {
+    font: 700 15px "Source Sans 3", system-ui, sans-serif;
+    padding: 10px 22px; border: 0; border-radius: 10px; cursor: pointer;
+    background: transparent; color: var(--muted);
+  }
+  .seg button[aria-pressed="true"] { background: var(--accent); color: var(--on-accent); }
+  .seg button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .panel[hidden] { display: none; }
+
+  /* operator cards */
+  .op-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin: 14px 0; }
+  .op {
+    border: 1px solid var(--line); border-radius: 12px; padding: 18px;
+    background: var(--surface);
+  }
+  .op-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
+  .op-head h3 { margin: 0; font-size: 18px; }
+  .op dl { display: grid; grid-template-columns: minmax(0, 148px) 1fr; column-gap: 14px; row-gap: 6px; margin: 10px 0 0; font-size: 15.5px; }
+  .op dt { color: var(--faint); font-size: 13px; text-transform: uppercase; letter-spacing: .05em; font-weight: 600; padding-top: 3px; }
+  .op dd { margin: 0; }
+  .op .caveat { display: block; margin-top: 2px; }
+
+  /* fact rows */
+  .rows { border-bottom: 1px solid var(--line); margin: 12px 0 18px; }
+  .row { display: grid; grid-template-columns: minmax(0, 230px) 1fr; gap: 6px 18px; padding: 11px 0; border-top: 1px solid var(--line); }
+  .row .rk { font-weight: 700; font-size: 15.5px; }
+  .row .rv { font-size: 15.5px; }
+  .row .rv .caveat, .row .rv .src { display: block; margin-top: 2px; }
+  .src { font-size: 13px; color: var(--faint); }
+  .src a { color: inherit; }
+
+  /* charts */
+  .chart-wrap {
+    border: 1px solid var(--line); border-radius: 12px; background: var(--surface);
+    padding: 20px 18px 10px; margin: 16px 0 22px;
+  }
+  .chart-wrap h3 { margin-bottom: 2px; }
+  .chart-wrap svg { display: block; width: 100%; height: auto; margin-top: 10px; }
+
+  /* calculators */
+  .calc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 14px; margin: 16px 0; }
+  .calc {
+    border: 1px solid var(--line); border-radius: 12px; background: var(--surface); padding: 20px;
+  }
+  .calc fieldset { border: 0; margin: 0; padding: 0; }
+  .calc label { display: block; font-size: 14.5px; font-weight: 600; color: var(--muted); margin: 10px 0 4px; }
+  .calc input[type="number"], .calc input[type="text"] {
+    width: 100%; font: 600 18px "Source Sans 3", system-ui, sans-serif;
+    padding: 10px 12px; border-radius: 8px; border: 1px solid var(--line);
+    background: var(--bg); color: var(--ink);
+  }
+  .calc output {
+    display: block; margin-top: 14px; padding: 12px 14px; border-radius: 8px;
+    background: var(--ok-bg); border: 1px solid var(--ok-line);
+    font-size: 16px; min-height: 1.5em;
+  }
+  .calc output .num { font-size: 21px; }
+  .calc .hint { font-size: 13.5px; color: var(--muted); margin-top: 8px; }
+
+  /* checklists as styled list items (no checkboxes) */
+  .check { list-style: none; padding-left: 0; margin: 14px 0; }
+  .check li {
+    position: relative; padding: 11px 14px 11px 44px; margin-bottom: 8px;
+    border: 1px solid var(--line); border-radius: 10px; background: var(--surface);
+    font-size: 15.5px;
+  }
+  .check li::before {
+    content: "—"; position: absolute; left: 16px; top: 11px;
+    color: var(--accent); font-weight: 700;
+  }
+
+  /* two-column helpers */
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 14px 0; }
+
+  /* sources */
+  .sources h4 {
+    font-family: Bitter, Georgia, serif; font-size: 16px; margin: 22px 0 8px;
+    padding-bottom: 6px; border-bottom: 1px solid var(--line);
+  }
+  .sources ul { list-style: none; padding-left: 0; }
+  .sources li {
+    font-size: 14.5px; margin-bottom: 8px; overflow-wrap: anywhere;
+    border-left: 2px solid var(--line); padding-left: 12px;
+  }
+  .sources li::marker { content: none; }
+  .sources .s-name { font-weight: 600; color: var(--ink); }
+  .sources .s-note { color: var(--faint); display: block; font-size: 13.5px; }
+
+  footer.end { margin-top: 60px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--faint); font-size: 13.5px; }
+  footer.end p { margin: 0 0 6px; }
+
+  /* flag list */
+  .flags { list-style: none; padding-left: 0; }
+  .flags li { padding: 10px 14px 10px 36px; position: relative; margin-bottom: 8px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; font-size: 15.5px; }
+  .flags li::before { content: "✕"; position: absolute; left: 13px; top: 10px; color: var(--danger); font-weight: 700; }
+  .flags.good li::before { content: "✓"; color: var(--accent); }
+  .flags.warns li::before { content: "!"; left: 17px; }
+
+  @media (max-width: 640px) {
+    body { font-size: 16px; }
+    .row { grid-template-columns: 1fr; gap: 2px; }
+    .op dl { grid-template-columns: 1fr; row-gap: 2px; }
+    .op dt { padding-top: 6px; }
+    .split { grid-template-columns: 1fr; }
+    .seg { width: 100%; }
+    .seg button { flex: 1; padding: 10px 8px; }
+    .tile .t-v { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<main>
+<div class="wrap">
+
+<p class="dateline">Orlando, FL &amp; Charlotte, NC &middot; Researched September 30, 2026</p>
+<h1>Rent vs. rent-to-own: the clear view</h1>
+<p class="lede">Your numbers are <strong>$1,000 a month</strong> for rent, or scraping together about <strong>$5,000</strong> (via a one-time 401(k) loan once the balance is there) as a rent-to-own deposit. This page lays out what each path actually costs in Orlando and Charlotte right now &mdash; the companies, the private-lease terms, the legal protections, and the assistance programs &mdash; so you can learn the shape of the opportunity before anything is locked in.</p>
+
+<nav class="toc" aria-label="On this page">
+  <a href="#verdict">Bottom line</a>
+  <a href="#anatomy">How a lease-option works</a>
+  <a href="#strategies">Making the monthly work</a>
+  <a href="#cities">Orlando vs. Charlotte</a>
+  <a href="#math">The math</a>
+  <a href="#k401">The 401(k) deposit plan</a>
+  <a href="#checklist">Decision checklist</a>
+  <a href="#open">Open questions</a>
+  <a href="#sources">All sources</a>
+</nav>
+
+<!-- ================= VERDICT ================= -->
+<section class="block" id="verdict" aria-labelledby="h-verdict">
+  <h2 id="h-verdict">The bottom line, honestly</h2>
+  <p class="sec-sub">Researched September 30, 2026. Every figure below comes from the research with its source attached; hedges and unknowns are kept visible.</p>
+
+  <div class="cards">
+    <div class="card">
+      <span class="badge closed">Closed at your budget</span>
+      <h3>Company rent-to-own</h3>
+      <p>In <strong>Charlotte</strong>, no company lease-to-own operator fits $5K down / $1K a month: Landis doesn&rsquo;t serve Charlotte, Divvy skips the Carolinas, Dream America&rsquo;s program ended, and Acre needs <strong>~5% of the home&rsquo;s value</strong> (~$15K on a $300K home; ~$25K only on the ~$500K example) with payments quoted at <strong>~$3,800&ndash;$4,200/mo on a $500K home</strong> &mdash; roughly 3&ndash;5&times; the deposit and 4&times; the monthly.</p>
+      <p>In <strong>Orlando</strong>, the three named programs are dead ends too (Dream America exited, Landis is South/SW Florida only, JAAG is Canada-only) &mdash; with one thread to re-check: Divvy lists Orlando among its markets.</p>
+      <p class="foot">Operator-by-operator status in the city view, with web-verified sources.</p>
+    </div>
+    <div class="card">
+      <span class="badge later">Possible only later</span>
+      <h3>Private lease-option with a seller</h3>
+      <p>This is the only rent-to-own route actually available in both cities right now. But a Charlotte lease-option house payment realistically runs <span class="num">$1,500&ndash;$2,600+/mo</span> and the option fee on a starter home is <span class="num">$3,000&ndash;$15,000</span> &mdash; neither fits today&rsquo;s budget.</p>
+      <p>Charlotte&rsquo;s upside is structural: Chapter&nbsp;47G gives tenant-buyers unusually strong protections. Orlando has no dedicated statute, so the contract is your whole protection.</p>
+      <p class="foot">Realistic as a future option once the deposit and the monthly can stretch.</p>
+    </div>
+    <div class="card">
+      <span class="badge path">The path to work toward</span>
+      <h3>FHA + down-payment assistance</h3>
+      <p>The strongest route to ownership in both states isn&rsquo;t rent-to-own. <strong>Charlotte:</strong> NCHFA offers up to 3% DPA (or $15,000 for first-time buyers) at 0%, forgiven over 15 years, at 640 credit. <strong>Orlando:</strong> Hometown Heroes (up to $35,000, 0% deferred) and Florida Assist ($10,000, 0% deferred) at 640 credit.</p>
+      <p>Still not a $1,000/mo fit &mdash; carrying costs are ~$2,000+/mo &mdash; but it&rsquo;s the path to aim for, not something to sign today.</p>
+      <p class="foot">Needs 640+ credit and real savings; assistance funding changes, so confirm before counting on it.</p>
+    </div>
+  </div>
+
+  <div class="nums-strip" aria-label="Key numbers">
+    <div class="tile"><div class="t-v">$3K&ndash;$15K</div><div class="t-l">Typical option fee on a Charlotte starter home (1&ndash;5%)</div></div>
+    <div class="tile"><div class="t-v">1.2&ndash;1.7%</div><div class="t-l">What your $5K is against a typical Charlotte home price</div></div>
+    <div class="tile"><div class="t-v">$1,491</div><div class="t-l">Median Charlotte starter-home rent (July 2026, Realtor.com)</div></div>
+    <div class="tile"><div class="t-v">$2,153</div><div class="t-l">Cost to <em>buy</em> that Charlotte starter &mdash; $662/mo more than renting</div></div>
+    <div class="tile"><div class="t-v">+$8,750</div><div class="t-l">FHA 3.5% down on a $250K example home &mdash; real equity from day one</div></div>
+    <div class="tile"><div class="t-v">2&times;</div><div class="t-l">Vested 401(k) balance needed per dollar of loan ($10K for a $5K loan)</div></div>
+  </div>
+</section>
+<!-- ================= ANATOMY ================= -->
+<section class="block" id="anatomy" aria-labelledby="h-anatomy">
+  <h2 id="h-anatomy">How a lease-option actually works</h2>
+  <p class="sec-sub">The vocabulary first, because the difference between a <strong>good</strong> and a <strong>dangerous</strong> deal lives entirely in these terms.</p>
+
+  <div class="split">
+    <div class="callout ok">
+      <span class="k">Lease-option (the safe structure)</span>
+      <p>You get the <em>right</em>, not the obligation, to buy at a set price by a set date. If you walk away, you lose the option fee and any rent credits &mdash; but you owe nothing more. Always prefer this one.</p>
+    </div>
+    <div class="callout danger">
+      <span class="k">Lease-purchase (the risky structure)</span>
+      <p>You are contractually <em>obligated</em> to buy. If your financing falls through at the deadline, that can mean breach-of-contract claims against you. Avoid it when the option version is available.</p>
+    </div>
+  </div>
+
+  <div class="rows">
+    <div class="row"><div class="rk">Option fee</div><div class="rv">Normally <span class="num">1&ndash;5%</span> of the price (some sources say 2&ndash;7%; a worked example uses 3&ndash;5%). Usually <strong>non-refundable</strong> &mdash; but credited toward the price if you exercise the option.<span class="caveat">This is where the $5K would go. On a $300K starter: $3K&ndash;$15K; on a $412K median Charlotte home: $4,120&ndash;$20,600.</span></div></div>
+    <div class="row"><div class="rk">Rent credit</div><div class="rv">Typically <span class="num">10&ndash;20%</span> of your monthly payment counts toward the future price. The rest is just rent. Check what <em>voids</em> the credit (a late payment may wipe it).<span class="caveat">The premium you pay above market rent is the hidden price of the option.</span></div></div>
+    <div class="row"><div class="rk">Purchase price</div><div class="rv">Usually <strong>locked at signing</strong> &mdash; this is the honest benefit: if the market rises, your price doesn&rsquo;t. Get the price or the escalation formula in writing.</div></div>
+    <div class="row"><div class="rk">Term</div><div class="rv"><span class="num">1&ndash;3 years</span> typical. That&rsquo;s your window to become mortgage-ready, because at the end you buy with real financing or you walk.</div></div>
+    <div class="row"><div class="rk">Maintenance</div><div class="rv">The tenant-buyer often assumes responsibility for maintenance and repairs, unlike a normal lease. Who pays must be in the contract.</div></div>
+    <div class="row"><div class="rk">What you&rsquo;re paying for</div><div class="rv">Say market rent is $1,500 and you pay $1,800 &mdash; the extra $300 is the option premium. Over 2 years, that&rsquo;s $7,200 of premium plus the option fee, all at risk until you exercise.<span class="caveat">Illustrative math on the report&rsquo;s ranges, not a quoted deal.</span></div></div>
+  </div>
+  <p class="caption">Sources: Orlando research pass (Investopedia worked example, industry summaries, Sept 2026).</p>
+</section>
+
+<!-- ================= STRATEGIES ================= -->
+<section class="block" id="strategies" aria-labelledby="h-strategies">
+  <h2 id="h-strategies">Making the monthly payment work</h2>
+  <p class="sec-sub">The honest math problem: your $1,000/mo ceiling against realistic lease-option house payments of $1,500&ndash;$2,600+/mo. No company program and no down-payment-assistance path closes that gap today &mdash; the only lever is shared housing. Below: the realistic version, the risky version, and the timeline that makes either one possible. (This section is future planning, at your request &mdash; the core verdict is unchanged: no lease-option in Charlotte closes on today&rsquo;s numbers in 2026.)</p>
+
+  <h3>Strategy 1: the roommate offset (the realistic core)</h3>
+  <p>Lease-option a 2&ndash;3 bedroom home and share it while you live there: a housemate&rsquo;s rent goes toward the gross payment, and the typical 10&ndash;20% rent credit accrues on the <em>full</em> payment &mdash; so purchase credits keep building at the gross rate even as your net cost falls.</p>
+
+  <div class="callout">
+    <span class="k">Worked example &mdash; illustrative, not a quoted deal (Charlotte)</span>
+    <ul>
+      <li><strong>Gross lease-option payment: $1,900/mo</strong> &mdash; inside the research&rsquo;s realistic $1,500&ndash;$2,600+/mo range for Charlotte houses.</li>
+      <li><strong>Housemate&rsquo;s room contribution: ~$800/mo</strong> &mdash; an <em>assumed</em> figure for this example. Context from the research: 1BR apartments average $1,580 in Charlotte; per-room rents weren&rsquo;t researched, so any real plan needs a listing-backed rate.</li>
+      <li><strong>Your net: ~$1,100/mo</strong> &mdash; within reach of the $1,000 ceiling.</li>
+      <li><strong>Rent credits</strong> at a typical 15% of gross: <strong>$285/mo</strong> &rarr; ~$3,420/year accruing toward the purchase price.</li>
+      <li>Option fee at a typical 3% on a $300K starter: <strong>$9,000</strong> &mdash; inside the research&rsquo;s $3,000&ndash;$15,000 range. (Your planned $5K covers about half; a 1&ndash;2% fee would be the only fit.)</li>
+    </ul>
+  </div>
+
+  <div class="callout warn">
+    <span class="k">What this example can&rsquo;t cover &mdash; and what it assumes</span>
+    <p>An Orlando version of this math can&rsquo;t be shown: Orlando home prices and rents were not covered by the research. Get a local rent figure before trusting any Orlando equivalent. And the math assumes you can carry the <strong>gross $1,900</strong> alone if the roommate leaves &mdash; a lender&rsquo;s later mortgage assessment runs on your income alone (per the checklist: no credible path to a mortgage = no deal). Keep any housemate arrangement in writing &mdash; don&rsquo;t stack verbal deals on top of a lease-option.</p>
+  </div>
+
+  <h3>Strategy 2: whole-property subletting (high-risk &mdash; written consent only)</h3>
+  <p>This is something different from a roommate: you lease-option the home but live elsewhere while a third party pays the full payment. Per standard lease-option contract doctrine: <strong>most lease-option agreements prohibit subletting the entire property without the seller&rsquo;s written consent</strong>, and an unauthorized whole-property sublet risks the three worst outcomes at once &mdash; <strong>breach of the option agreement, forfeiture of the option fee, and eviction</strong>.<span class="caveat d-block" style="display:block; margin-top:6px;">Not verified against a specific North Carolina or Florida lease-option form in this research pass &mdash; the agreement you actually sign is what governs.</span></p>
+
+  <h3>How North Carolina&rsquo;s Chapter 47G fits</h3>
+  <div class="rows">
+    <div class="row"><div class="rk">Forfeiture is hard in NC</div><div class="rv">Under &sect;47G-4, forfeiting the option requires breach of an <strong>express</strong> obligation &mdash; plus notice and a chance to <strong>cure (once per 12-month period)</strong>. Under &sect;47G-5, the default notice must carry a forfeiture date <strong>not less than 30 days</strong> after service.</div></div>
+    <div class="row"><div class="rk">The catch</div><div class="rv">&ldquo;Written consent&rdquo; clauses are typically <em>in</em> the contract &mdash; making them exactly the kind of express obligation Chapter&nbsp;47G contemplates. So the protection is a safety net, not a strategy.</div></div>
+    <div class="row"><div class="rk">The practical rule</div><div class="rv">Get the subletting rules into the written agreement upfront, and get any consent <strong>in writing</strong> &mdash; so you never have to test the cure process or the 30-day notice. (Florida has no equivalent statutory shield: there, the contract governs entirely.)</div></div>
+  </div>
+
+  <div class="callout danger">
+    <span class="k">Bottom line on subletting</span>
+    <p>The roommate path above <em>is</em> the realistic version of this strategy. Whole-property subletting is the high-risk version &mdash; only with the seller&rsquo;s written consent, written into the agreement. Without that, it endangers the option fee itself.</p>
+  </div>
+
+  <h3>Timeline gates: a future step, not a current one</h3>
+  <p>Lease-to-own sits behind three gates, in this order:</p>
+  <ul class="check">
+    <li><strong>Deposit:</strong> ~$10,000+ vested 401(k) balance before a $5,000 loan exists (the 2&times; rule &mdash; only the <em>vested</em> balance counts). Your confirmed call: the balance is still small, so no loan until it grows into the <strong>tens of thousands</strong> first. That rule stays.</li>
+    <li><strong>Credit:</strong> 640+ &mdash; the threshold for the NCHFA programs, both Florida assistance programs, and typical FHA lender overlays. This is the gate the endgame mortgage passes through.</li>
+    <li><strong>Income:</strong> enough to carry the <strong>gross</strong> payment before any roommate offset. The option ends with a real mortgage application on your income; if the gross doesn&rsquo;t qualify, a housemate&rsquo;s contribution doesn&rsquo;t fix it.</li>
+  </ul>
+  <div class="callout ok">
+    <span class="k">The current phase</span>
+    <p><strong>Keep renting cheap, build credit, grow the 401(k).</strong> Each paycheck pushes on all three gates at once: savings builds toward the eventual deposit, on-time payments lift the score, stable employment protects the loan you&rsquo;re planning. The lease-option unlocks when <em>all three</em> gates are open &mdash; not before.</p>
+  </div>
+</section>
+
+<!-- ================= CITIES ================= -->
+<section class="block" id="cities" aria-labelledby="h-cities">
+  <h2 id="h-cities">Orlando vs. Charlotte</h2>
+  <p class="sec-sub">Pick a city to see its operators, market numbers, legal protections, assistance programs, scam patterns, and verification steps.</p>
+
+  <div class="seg" role="group" aria-label="Choose a city">
+    <button type="button" id="btn-orlando" aria-pressed="true" aria-controls="panel-orlando">Orlando, FL</button>
+    <button type="button" id="btn-charlotte" aria-pressed="false" aria-controls="panel-charlotte">Charlotte, NC</button>
+  </div>
+
+  <!-- ===== ORLANDO ===== -->
+  <div class="panel" id="panel-orlando" role="tabpanel" aria-labelledby="btn-orlando">
+    <h3>The named programs: all dead ends here</h3>
+    <div class="op-grid">
+      <div class="op">
+        <div class="op-head"><h3>Dream America</h3><span class="badge closed">Program ended</span></div>
+        <dl>
+          <dt>Status</dt><dd>Their own site: &ldquo;We No Longer Offer Rent to Own Homes &mdash; our lease purchase program ended in 2025 due to rising housing costs.&rdquo; They now point renters to FHA/VA/USDA lenders.</dd>
+          <dt>Verified</dt><dd>dreamamerica.com, read live 2026-09-30.<span class="caveat">The Charlotte pass noted it couldn&rsquo;t independently re-verify this from dreamamerica.com &mdash; but the Orlando pass did verify it live on their site the same day.</span></dd>
+        </dl>
+      </div>
+      <div class="op">
+        <div class="op-head"><h3>Landis</h3><span class="badge closed">Not in Orlando</span></div>
+        <dl>
+          <dt>Program</dt><dd>Free application, approved home budget, Landis buys the home you pick (including closing costs), you rent with a coach, then buy back when mortgage-ready. Initial deposit 2&ndash;3% of price.<span class="caveat">Third-party claims of 550 credit / $55K income minimums are unverified &mdash; not published on Landis&rsquo;s own pages.</span></dd>
+          <dt>Coverage</dt><dd>landis.com is live and operating in 2026 &mdash; but its Florida markets are <strong>Pompano Beach, Fort Lauderdale, Miami, Marco Island, Naples, Fort Myers, Cape Coral, Bradenton, Sarasota, North Port</strong>. No Orlando. It also scaled back nationally: once 51 cities / 12 states, now about 8 states.</dd>
+          <dt>Verified</dt><dd>landis.com rent-to-own pages + Florida listing, read live 2026-09-30.</dd>
+        </dl>
+      </div>
+      <div class="op">
+        <div class="op-head"><h3>JAAG Properties</h3><span class="badge closed">Canada only</span></div>
+        <dl>
+          <dt>Status</dt><dd>&ldquo;Rent to Own Homes in Canada&rdquo; &mdash; all listings in Ontario cities, office in London, ON. Not in Florida.</dd>
+          <dt>Verified</dt><dd>jaagproperties.com, read live 2026-09-30.</dd>
+        </dl>
+      </div>
+      <div class="op">
+        <div class="op-head"><h3>Divvy Homes</h3><span class="badge later">Needs a re-check</span></div>
+        <dl>
+          <dt>What the research says</dt><dd>Divvy&rsquo;s portfolio and platform were acquired by Brookfield/Maymont Homes (~$1B, early 2025) and the program continues across <strong>16 metros</strong> &mdash; Orlando included, per 2026 summaries (zavvie/RISMedia, Moneywise review). No Carolinas markets.</dd>
+          <dt>Caveat</dt><dd>This came from the <em>Charlotte</em> research pass; the Orlando pass didn&rsquo;t verify it. Terms cited in 2026 summaries (1&ndash;2% down, ~25% of monthly to home savings, 550 credit) are index-level, not site-verified.<span class="caveat">On paper, 1&ndash;2% on a ~$250K Orlando home is the closest thing to your $5K deposit found anywhere in this research &mdash; confirm it directly with Divvy before believing it.</span></dd>
+        </dl>
+      </div>
+    </div>
+
+    <h3>Orlando market numbers</h3>
+    <div class="callout warn">
+      <span class="k">A gap in the research</span>
+      <p>Orlando home prices and rents weren&rsquo;t covered in this research pass. The one data point found: Realtor.com (July&nbsp;2026) named Orlando among markets <strong>&ldquo;shifting favorably toward homebuyers.&rdquo;</strong> The $250K home used in the math below is an <em>illustrative example</em> from the research, not a market median. Don&rsquo;t treat it as a price quote.</p>
+    </div>
+
+    <h3>The law: no dedicated rent-to-own statute</h3>
+    <div class="rows">
+      <div class="row"><div class="rk">No single statute</div><div class="rv">Florida has no comprehensive rent-to-own law. These deals sit at the intersection of landlord-tenant law (ch.&nbsp;83), conveyance law, the statute of frauds, contract law, and potentially the equitable-mortgage doctrine. There is no standard contract.</div></div>
+      <div class="row"><div class="rk">Why that matters</div><div class="rv">With <strong>no statutory form and no agency oversight, the contract IS the entire protection</strong> &mdash; including against the classic failures: seller foreclosure, or forfeiture after one late payment. Never sign or pay before a Florida real-estate attorney reviews it.</div></div>
+      <div class="row"><div class="rk">Eviction vs. foreclosure</div><div class="rv">Because you&rsquo;re legally a <em>tenant</em>, an operator can terminate the lease under ch.&nbsp;83 and evict you &mdash; far faster and with fewer protections than mortgage foreclosure would give an owner.</div></div>
+      <div class="row"><div class="rk">HB&nbsp;1293 (new)</div><div class="rv">Effective <strong>October&nbsp;1, 2026</strong> (tomorrow), rental-application fraud becomes a felony in Florida. It&rsquo;s aimed mainly at fraudulent applicants, but it signals an aggressive enforcement climate around rental fraud generally.</div></div>
+    </div>
+
+    <h3>FHA + Florida down-payment assistance</h3>
+    <div class="callout ok">
+      <span class="k">Why this matters more than the option fee</span>
+      <p>On the report&rsquo;s $250K example, FHA&rsquo;s 3.5% down payment is <span class="num">$8,750</span> &mdash; likely <em>less</em> than a 3&ndash;5% non-refundable option fee ($7,500&ndash;$12,500), and it builds real equity from day one.</p>
+    </div>
+    <div class="rows">
+      <div class="row"><div class="rk">FHA baseline</div><div class="rv">580+ credit &rarr; 3.5% down &middot; 500&ndash;579 &rarr; 10% down &middot; below 500 ineligible. Many lenders add overlays (often 620&ndash;640). Costs: 1.75% upfront MIP + annual MIP (which is life-of-loan if you put &lt;10% down).</div></div>
+      <div class="row"><div class="rk">Hometown Heroes</div><div class="rv">5% of the first-mortgage amount, <span class="num">$10,000 min / $35,000 max</span>, as a <strong>0% deferred 30-year second mortgage &mdash; NOT forgivable</strong> (due on sale, refinance, transfer, or loss of primary occupancy). Reopened July&nbsp;13,&nbsp;2026 with $50M; <strong>more than $25M remained as of 9/21/2026</strong> (eHousingPlus data). Minimum 640 credit; eligible workforce occupations; first-time buyer; income limits; first-come-first-served through participating lenders; you must be under contract for funds to reserve.<span class="caveat">Past rounds ran dry &mdash; confirm live availability with the lender before counting on it. Cannot be combined with other Florida Housing DPA.</span></div></div>
+      <div class="row"><div class="rk">Florida Assist</div><div class="rv">Up to <span class="num">$10,000</span>, 0% interest, no monthly payment, deferred 30-year second; <strong>NOT forgivable</strong>. 640 FICO, first-time buyer, county income/purchase-price limits, homebuyer education. Available year-round &mdash; the fallback if Hometown Heroes is exhausted or you don&rsquo;t qualify.<span class="caveat">$10,000 covers the entire FHA 3.5% down payment on a $285,700 purchase.</span></div></div>
+      <div class="row"><div class="rk">Also on record</div><div class="rv">FL HLP: $12,500 at 3% amortizing over 30 years (~$52.70/mo &mdash; that payment <strong>does</strong> count in DTI). HFA Preferred/Advantage conventional first mortgages (640+). Orange County&rsquo;s own DPA (tiered, up to $70K for very-low-income buyers, per supermoney).</div></div>
+    </div>
+
+    <h3>Red flags (Florida patterns)</h3>
+    <ul class="flags">
+      <li>The &ldquo;seller&rdquo; doesn&rsquo;t actually own the property &mdash; documented in Florida investigations.</li>
+      <li>A single late payment triggers forfeiture of the option fee and all rent credits.</li>
+      <li>The seller pockets your rent while their own mortgage goes into foreclosure &mdash; you lose the home <em>and</em> every dollar.</li>
+      <li>Handwritten or post-signing-altered contracts with no oversight.</li>
+      <li>Anyone charging an upfront fee for &ldquo;guaranteed access&rdquo; to Hometown Heroes &mdash; Florida Housing says this is a scam. Applying is free.</li>
+    </ul>
+    <h3>Verification steps before money moves (Florida)</h3>
+    <ul class="check">
+      <li>Check the county property appraiser and tax collector for the true owner; check the clerk of court for liens and foreclosure; confirm the seller&rsquo;s ID matches the deed.</li>
+      <li>Require proof the seller is current on any mortgage.</li>
+      <li>Have a Florida real-estate attorney review the contract before you sign or pay anything.</li>
+      <li>Route the option fee through a title-company/attorney escrow &mdash; never cash or a wire to a personal account.</li>
+      <li>Record a memorandum of option at the county clerk.</li>
+      <li>Get the price-lock, rent-credit, maintenance, and default/forfeiture terms in writing &mdash; assume one late payment forfeits everything unless the contract says otherwise.</li>
+    </ul>
+  </div>
+
+  <!-- ===== CHARLOTTE ===== -->
+  <div class="panel" id="panel-charlotte" role="tabpanel" aria-labelledby="btn-charlotte" hidden>
+    <h3>The operators: the one that&rsquo;s here doesn&rsquo;t fit the budget</h3>
+    <div class="op-grid">
+      <div class="op">
+        <div class="op-head"><h3>Landis</h3><span class="badge closed">No Charlotte</span></div>
+        <dl>
+          <dt>Coverage</dt><dd>Serves North Carolina, but its &ldquo;rental home markets&rdquo; page (read live) lists only <strong>Greenville, Wilmington, Fayetteville, Cary, Chapel Hill, Durham, Burlington, High Point, Greensboro, Winston-Salem</strong>. Charlotte is absent.<span class="caveat">2&ndash;3% initial deposit verified on site. The 550 credit / $55K income minimums, the buyback appreciation schedule, and the 3% walkaway fee come from 2026 aggregators citing landis.com &mdash; not from the site itself. Late-payment policy not verifiable on a primary source.</span></dd>
+          <dt>The program</dt><dd>Free application with a soft credit pull, underwriter-approved home budget, Landis buys the home you pick, rent-while-you-prepare with a Homeownership Coach, buy back when mortgage-ready. 12&ndash;24 month program.</dd>
+        </dl>
+      </div>
+      <div class="op">
+        <div class="op-head"><h3>Divvy Homes</h3><span class="badge closed">No Carolinas</span></div>
+        <dl>
+          <dt>Coverage</dt><dd>Operates across 16 metros &mdash; Atlanta, Dallas, Tampa, <strong>Orlando</strong>, and others &mdash; but <strong>none in the Carolinas</strong>. Expansion &ldquo;could include the Carolinas&rdquo; at some point.</dd>
+          <dt>Context</dt><dd>Divvy&rsquo;s ~$1B portfolio and platform were acquired by Brookfield/Maymont Homes in early 2025 and the program continues. 1&ndash;2% upfront, ~25% of monthly toward home savings (up to 10% over 3 years), 3-year term &mdash; all from index-level 2026 summaries.<span class="caveat">Cited terms are from index summaries, not verified on Divvy&rsquo;s own site.</span></dd>
+        </dl>
+      </div>
+      <div class="op">
+        <div class="op-head"><h3>Acre Homes</h3><span class="badge later">In Charlotte &mdash; budget mismatch</span></div>
+        <dl>
+          <dt>The deal</dt><dd>Durham-based &ldquo;lease with appreciation&rdquo; company that <strong>just landed in Charlotte in September 2026</strong> (one resident placed, in Lake Norman). Aimed at &ldquo;busy professionals.&rdquo;</dd>
+          <dt>Terms</dt><dd><strong>~5% of the home&rsquo;s value upfront</strong>: ~$15,000 on a $300K home; ~$25,000 only on the ~$500K example. Monthly payments are quoted as <strong>Saver ~$3,792, Boost ~$4,171 &mdash; both on that $500K home</strong>. 10% or 50% of appreciation shared; 3-year term with buy/extend/transfer/cash-out options.</dd>
+          <dt>Why it&rsquo;s not yours</dt><dd>Even at the low end (~$15K), that&rsquo;s <strong>3&times; your deposit</strong> &mdash; and quoted payments (~$3.8K&ndash;$4.2K/mo on a $500K home) run ~4&times; your $1,000 ceiling. Wildly incompatible either way.</dd>
+        </dl>
+      </div>
+      <div class="op">
+        <div class="op-head"><h3>Dream America</h3><span class="badge closed">No Charlotte presence</span></div>
+        <dl>
+          <dt>Status</dt><dd>Historically FL/GA/TN metros (never Charlotte), and per the Orlando pass &mdash; verified live on their site &mdash; the lease-purchase program ended in 2025.</dd>
+        </dl>
+      </div>
+      <div class="op">
+        <div class="op-head"><h3>Verbhouse</h3><span class="badge closed">Bay Area only</span></div>
+        <dl>
+          <dt>Status</dt><dd>San Francisco Bay Area program (5&ndash;10% upfront, 5-year price lock). No Charlotte presence found; full market list not verifiable from its site.</dd>
+        </dl>
+      </div>
+    </div>
+
+    <h3>Charlotte market numbers (2026)</h3>
+    <div class="nums-strip" aria-label="Charlotte market numbers">
+      <div class="tile"><div class="t-v">$429K</div><div class="t-l">Metro median list price, Aug 2026 (Realtor.com, &minus;2.5% YoY)</div></div>
+      <div class="tile"><div class="t-v">$349,990</div><div class="t-l">Median sold: condos/townhomes</div></div>
+      <div class="tile"><div class="t-v">$455K</div><div class="t-l">Median sold: single-family (Feb 2026); starters exist in the $300s</div></div>
+      <div class="tile"><div class="t-v">$1,491</div><div class="t-l">Median starter-home rent (July 2026)</div></div>
+      <div class="tile"><div class="t-v">$2,231&ndash;$2,593</div><div class="t-l">Average 3BR rent (Rentable.co, ApartmentList)</div></div>
+      <div class="tile"><div class="t-v">$1,580</div><div class="t-l">Average 1BR apartment rent &mdash; above your $1,000 ceiling already</div></div>
+    </div>
+    <div class="rows">
+      <div class="row"><div class="rk">What $5K buys</div><div class="rv">1&ndash;5% option fees on Charlotte homes run <span class="num">$3,000&ndash;$15,000</span> on a $300K starter, and <span class="num">$4,120&ndash;$20,600</span> on the $412K median. Your $5,000 = only <span class="num">~1.2&ndash;1.7%</span> of a typical home &mdash; below the standard 2&ndash;5% option fee.</div></div>
+      <div class="row"><div class="rk">What $1K/mo gets</div><div class="rv">Realistic lease-option house payments are <span class="num">$1,500&ndash;$2,600+/mo</span> (rent + option premium runs at or above market rent). $1,000/mo is ~$500 below median starter-home rent and ~$1,150 below the cost of buying. <strong>Not realistic for any house-based lease-option in Charlotte in 2026.</strong></div></div>
+    </div>
+
+    <h3>The law: unusually strong protections (Chapter 47G)</h3>
+    <p class="sec-sub">N.C.G.S. Chapter&nbsp;47G &mdash; &ldquo;Option to Purchase Contracts Executed With Lease Agreements&rdquo; &mdash; was verified live on ncleg.gov, current through S.L.&nbsp;2026-30. Charlotte&rsquo;s structural edge over Orlando.</p>
+    <div class="rows">
+      <div class="row"><div class="rk">&sect;47G-2: the contract</div><div class="rv">Every option contract must be <strong>in writing, signed and acknowledged</strong>: names/addresses, dates, legal description, the sales price, the option fee and all other fees, every obligation whose breach triggers forfeiture, the exercise period, cure rights, and a <strong>3-business-day cancellation right in &ge;14-point boldface</strong> above the signature. The seller must <strong>record the contract (or a Memorandum of Option) with the county register of deeds within 5 business days</strong>.</div></div>
+      <div class="row"><div class="rk">&sect;47G-4: no easy forfeiture</div><div class="rv">No forfeiture without breach of an <strong>express</strong> obligation &mdash; and forfeiture requires proper notice plus an opportunity to <strong>cure (once per 12-month period)</strong>.</div></div>
+      <div class="row"><div class="rk">&sect;47G-5: fair warning</div><div class="rv">The default notice must state the nature and amount of the default, with a forfeiture date <strong>not less than 30 days</strong> after service (hand delivery or formal service).</div></div>
+      <div class="row"><div class="rk">&sect;47G-6: seller defaults</div><div class="rv">If the seller defaults on <em>their</em> mortgage or lien, you may <strong>exercise the option &mdash; or rescind and recover ALL money paid</strong> (offset only by fair rental value + damage beyond normal wear). This is the Florida nightmare scenario, legislated away in NC.</div></div>
+      <div class="row"><div class="rk">&sect;47G-7: your remedies</div><div class="rv">You can sue for damages, ask a court to void a violating transaction, or seek other equitable relief. The seller can use summary ejectment; you can counterclaim.</div></div>
+      <div class="row"><div class="rk">Caution (unverified as a primary source)</div><div class="rv">Lease-options with heavy rent credits can be recharacterized by courts as <strong>equitable mortgages</strong> (requiring foreclosure, not ejectment). Treat this as a &ldquo;have an NC attorney review the structure&rdquo; warning, not settled law.<span class="caveat">Also note: NC&rsquo;s separate contract-for-deed (installment land contract) rules were not researched in this pass.</span></div></div>
+    </div>
+
+    <h3>NCHFA down-payment assistance: the strongest alternative</h3>
+    <div class="rows">
+      <div class="row"><div class="rk">NC Home Advantage Mortgage</div><div class="rv">30-yr fixed via participating lenders statewide, for first-time <em>and</em> move-up buyers: <strong>DPA up to 3% of the loan at 0% interest</strong> as a deferred subordinate lien, <strong>forgiven 20%/year in years 11&ndash;15</strong> (full forgiveness at year&nbsp;15; repay only if you sell/refinance/transfer before then). Needs: income &le; $152,000, <strong>credit &ge;640</strong> (each borrower needs 2 scores), DTI &le; 45%, no maximum sales price, homebuyer education if all borrowers are first-timers.</div></div>
+      <div class="row"><div class="rk">NC 1st Home Advantage DP</div><div class="rv"><strong>$15,000</strong> down-payment assistance for first-time buyers (no ownership in 3 years) and military veterans. Same 0% / 15-year forgiven structure. Home price &le; $495,000; 30-yr fixed only; 640 credit minimum (660 for manufactured).</div></div>
+      <div class="row"><div class="rk">Funding</div><div class="rv"><strong>Ongoing &mdash; not a limited round.</strong> NCHFA is self-supporting and reported all-time-high ~$1B in mortgage activity; available through participating lenders statewide. There&rsquo;s also the NC Home Advantage Tax Credit (MCC, up to $2,000/yr federal tax credit).</div></div>
+      <div class="row"><div class="rk">Reality check</div><div class="rv">NCHFA requires 640 credit and real mortgage qualification; carrying costs on a Charlotte starter (~$2,150/mo) exceed the $1,000 budget. A <strong>goal to work toward</strong>, not an immediate fit.</div></div>
+    </div>
+
+    <h3>Red flags (NC patterns)</h3>
+    <ul class="flags">
+      <li><strong>Rental scams are rising statewide</strong> (NC AG Jeff Jackson + NC Real Estate Commission, June&nbsp;2026): fake listings with copied photos, scammers impersonating owners, pressure tactics.</li>
+      <li>Being pushed to send a deposit before you&rsquo;ve confirmed the property and the landlord&rsquo;s or broker&rsquo;s identity.</li>
+      <li>&ldquo;We buy homes&rdquo; style rent-to-own ads with big upfront fees (NCDOJ) &mdash; <strong>never pay money upfront before signing a lease/contract</strong>.</li>
+      <li>Refusal to put promises in writing; pressure to sign unread paperwork; being told not to talk to your lender or attorney.</li>
+      <li>Decades-long commitments, liens recorded on your home, clauses that bind your heirs &mdash; NC&rsquo;s AG won cases against MV Realty and Stone Brook Partners; the 2023 <strong>Unfair Real Estate Agreements Act</strong> now bans such long-term real-estate service contracts.</li>
+      <li>Rent-to-own listing aggregators with stale/duplicate listings &mdash; some show &ldquo;updated 3,666 days ago.&rdquo;</li>
+    </ul>
+    <h3>Verification steps before money moves (North Carolina)</h3>
+    <ul class="check">
+      <li>Look up ownership <em>and</em> liens at the <strong>Mecklenburg County Register of Deeds</strong> (online) before paying any option fee.</li>
+      <li>Escrow the option fee through a <strong>NC-licensed attorney or title company</strong> &mdash; never wire money to an individual.</li>
+      <li>Have an NC real-estate attorney confirm the deal is <strong>Chapter&nbsp;47G compliant</strong> and that the memorandum is <strong>recorded within 5 business days</strong>.</li>
+      <li>Verify any broker&rsquo;s license at ncrec.gov; confirm the seller is current on their mortgage.</li>
+      <li>Confirm who pays taxes, insurance, HOA, and maintenance; how the future price is set; exactly what happens on a missed payment (cure once/12 mo; 30-day notice minimum); and the exact walkaway costs.</li>
+      <li>Get a mortgage lender&rsquo;s written assessment of what it would take to qualify by the option deadline &mdash; no credible path to a mortgage means no deal.</li>
+      <li>Report suspected fraud to the NC AG at <strong>1-877-5-NO-SCAM</strong> / ncdoj.gov.</li>
+    </ul>
+  </div>
+</section>
+<!-- ================= MATH ================= -->
+<section class="block" id="math" aria-labelledby="h-math">
+  <h2 id="h-math">The math, on real figures</h2>
+  <p class="sec-sub">Monthly and upfront bars drawn only from the research&rsquo;s verified numbers. Orlando market medians weren&rsquo;t researched, so the monthly chart is Charlotte-only.</p>
+
+  <div class="chart-wrap">
+    <h3>Charlotte monthly: your $1,000 vs. what the paths cost</h3>
+    <svg viewBox="0 0 640 300" role="img" aria-labelledby="ch1t ch1d">
+      <title id="ch1t">Charlotte monthly costs comparison</title>
+      <desc id="ch1d">Bar chart. Your budget: $1,000. Median starter-home rent: $1,491. Lease-option house payment low end: $1,500. Cost to buy the same starter: $2,153. Lease-option house payment high end: $2,600.</desc>
+      <g id="ch1bars" font-family="inherit" font-size="13">
+        <!-- axis labels at x=205, bars start x=215, max 2600 -> 400px -->
+      </g>
+    </svg>
+    <p class="caption">Sources: Realtor.com (July 2026 rents, buy-vs-rent cost); Charlotte research pass (lease-option range). The lease-option range reflects rent + option premium sitting at or above market rent.</p>
+  </div>
+
+  <div class="chart-wrap">
+    <h3>Upfront: your $5K vs. what the doors actually cost</h3>
+    <svg viewBox="0 0 640 330" role="img" aria-labelledby="ch2t ch2d">
+      <title id="ch2t">Upfront cost comparison across both cities</title>
+      <desc id="ch2d">Bar chart. 1% option fee on a $300,000 Charlotte starter: $3,000. Your $5,000 deposit target. FHA 3.5% down on the $250,000 Orlando example home: $8,750. 5% option fee on a $300,000 Charlotte starter: $15,000. Acre Homes 5% share on a $500,000 home: $25,000.</desc>
+      <g id="ch2bars" font-family="inherit" font-size="13"></g>
+    </svg>
+    <p class="caption">Sources: Charlotte research pass ($300K starter, 1&ndash;5% option range); Orlando research pass ($250K illustrative example home); Acre Homes site ($25K is 5% on their $500K example &mdash; at $300K it would be ~$15K). The $5,000 line is your planned deposit &mdash; a 3% option fee on the Charlotte starter would be $9,000.</p>
+  </div>
+
+  <div class="callout warn">
+    <span class="k">What this chart can&rsquo;t tell you</span>
+    <p>These are honest snapshots on your numbers today &mdash; not a verdict for forever. The deposit math moves with home prices, and the assistance programs move with funding rounds and your credit score. Nothing here requires you to act on a deadline.</p>
+  </div>
+</section>
+
+<!-- ================= 401K ================= -->
+<section class="block" id="k401" aria-labelledby="h-k401">
+  <h2 id="h-k401">The 401(k) deposit plan: the rules that apply</h2>
+  <p class="sec-sub">Your stated plan: one-time 401(k) loan, taken only once you&rsquo;ve saved enough in the account, to fund the rent-to-own deposit. Here&rsquo;s what the IRS rules and the research say about that &mdash; including where your plan&rsquo;s terms still need confirming with Empower.</p>
+
+  <div class="calc-grid">
+    <div class="calc">
+      <fieldset>
+        <legend style="font-weight:700;font-size:17px;padding:0 4px;">How much could I borrow?</legend>
+        <label for="ci-vested">Your vested 401(k) balance ($)</label>
+        <input type="number" id="ci-vested" min="0" step="100" placeholder="e.g. 18000" inputmode="numeric" />
+        <output id="co-loan" for="ci-vested">Enter a balance to see your max loan.</output>
+        <p class="hint">IRS rule: lesser of 50% of vested balance or $50,000. Some plans adopt an optional $10,000 floor &mdash; not required. Only the <em>vested</em> portion counts (unvested match is excluded).</p>
+      </fieldset>
+    </div>
+    <div class="calc">
+      <fieldset>
+        <legend style="font-weight:700;font-size:17px;padding:0 4px;">How much do I need saved?</legend>
+        <label for="ci-deposit">Deposit you want to fund ($)</label>
+        <input type="number" id="ci-deposit" min="0" step="100" placeholder="e.g. 5000" inputmode="numeric" />
+        <output id="co-vested" for="ci-deposit">Enter a deposit to see the vested balance needed.</output>
+        <p class="hint">The 2&times; rule: $5K needs $10K vested; $8K needs $16K; $10K needs $20K; $15K needs $30K. At $100K vested, the $50,000 cap takes over.</p>
+      </fieldset>
+    </div>
+    <div class="calc">
+      <fieldset>
+        <legend style="font-weight:700;font-size:17px;padding:0 4px;">Estimate the repayment</legend>
+        <label for="ci-amount">Loan amount ($)</label>
+        <input type="number" id="ci-amount" min="0" step="100" placeholder="e.g. 5000" inputmode="numeric" />
+        <label for="ci-rate">Interest rate (% per year)</label>
+        <input type="number" id="ci-rate" min="0" max="25" step="0.1" placeholder="e.g. 9.5" inputmode="decimal" />
+        <label for="ci-years">Term (years)</label>
+        <input type="number" id="ci-years" min="1" max="15" step="0.5" value="5" inputmode="decimal" />
+        <output id="co-repay" for="ci-amount ci-rate ci-years">Enter amount and rate for an estimate.</output>
+        <p class="hint">Estimate from your own inputs. The research found plan rates are typically prime + 1&ndash;2%, set by the administrator, with interest paid back into your own account &mdash; but repayments are after-tax payroll deductions, and the interest is taxed again on withdrawal.</p>
+      </fieldset>
+    </div>
+  </div>
+
+  <h3>The terms you&rsquo;d be borrowing under</h3>
+  <div class="rows">
+    <div class="row"><div class="rk">Max loan</div><div class="rv">Lesser of <strong>50% of the vested balance or $50,000</strong> (IRC &sect;72(p)). A plan may set stricter limits &mdash; and a plan is not required to offer loans at all.<span class="src">IRS &mdash; Retirement Plans FAQs Regarding Loans (read live 2026-09-30)</span></div></div>
+    <div class="row"><div class="rk">Repayment term for option fees</div><div class="rv"><strong>Standard 5-year term</strong>, in level payments at least quarterly (usually each paycheck). The longer principal-residence term is only for buying a principal residence &mdash; and the plan must see <strong>documentation of the purchase before approving it</strong> (self-certification isn&rsquo;t enough). An option fee or deposit paid at lease-signing doesn&rsquo;t acquire a residence, so the extended term doesn&rsquo;t apply.<span class="caveat">The lease-option implication is analysis grounded in the IRS documentation requirement &mdash; not a separate IRS ruling on lease-options.</span></div></div>
+    <div class="row"><div class="rk">The 12-month lookback</div><div class="rv">For the $50,000 prong, the IRS subtracts (highest outstanding balance in the 12 months before the new loan) &minus; (balance owed now). Repaying an old loan first <strong>barely helps</strong>: the high-water mark counts for a full 12 months. IRS worked example: $80K vested, $27K borrowed 8 months ago, $18K still owed &rarr; new loan max is just $22,000 (or $23,000 even if the $18K is repaid first).<span class="caveat">The 50%-of-vested prong is unaffected by history. Your one-time-loan description means no second loan is expected at all &mdash; confirm what &ldquo;one-time&rdquo; means at Empower (one-time-ever vs. one-at-a-time).</span></div></div>
+    <div class="row"><div class="rk">Interest</div><div class="rv">Set by the administrator; industry norm is <strong>prime + 1&ndash;2%</strong>. Interest is credited back to your own account &mdash; but paid with after-tax dollars and taxed again in retirement. (Strictly, the clearly double-taxed piece is the <em>interest</em>; popular summaries describing all repayments as double-taxed overstate it for the principal.) Fees are the norm: most commonly $50, then $75 origination.</div></div>
+    <div class="row"><div class="rk">The big tail risk: job loss</div><div class="rv">Plan rules at separation vary: some demand immediate lump-sum payoff; some allow continued ACH/check payments; some give a cure period. If the loan isn&rsquo;t repaid per plan terms &rarr; <strong>default &rarr; &ldquo;deemed distribution&rdquo;</strong> of the whole balance: taxable income <strong>plus a 10% penalty if under 59&frac12;</strong> (no job-loss exception), and it is <em>not</em> eligible for rollover. If instead the plan <em>offsets</em> the balance (a Qualified Plan Loan Offset), you generally have until the <strong>tax-filing deadline, including extensions</strong>, to roll the offset into an IRA &mdash; but the offset is still a reportable distribution on paper, and it shrinks your payout permanently.</div></div>
+    <div class="row"><div class="rk">Credit report</div><div class="rv">401(k) loans <strong>do not appear on credit reports</strong>; a default has no credit-score consequences (no collections). Lenders learn of the loan only from your disclosures, statements, or the loan paperwork.</div></div>
+  </div>
+
+  <h3>How mortgage lenders treat the loan</h3>
+  <div class="rows">
+    <div class="row"><div class="rk">DTI exclusion</div><div class="rv"><strong>FHA, Fannie Mae, and Freddie Mac all let the lender exclude the 401(k) loan payment from your debt-to-income ratio</strong>, because the loan is secured by your own financial asset. The lender must document the loan instrument.<span class="caveat">Fannie Mae B3-6-05 verified live. FHA verified via a handbook-text mirror plus multiple corroborations (hud.gov not opened). Freddie Mac verified via a Freddie LP correspondent underwriting guide, not guide.freddiemac.com. Individual lenders may add overlays stricter than agency minimums.</span></div></div>
+    <div class="row"><div class="rk">Reserves shrink</div><div class="rv">The 401(k) balance counted as reserves is <strong>reduced by the loan amount (and fees)</strong> &mdash; so $60K with a $10K loan counts as ~$50K.</div></div>
+    <div class="row"><div class="rk">As a down-payment source</div><div class="rv">FHA treats a 401(k)-secured loan as a collateralized loan &mdash; an acceptable source of funds (even toward the minimum required investment) with verification of collateral, note, and proceeds. Fannie Mae accepts it with documentation of terms, transfer, and asset value.</div></div>
+    <div class="row"><div class="rk">The comparison that matters</div><div class="rv"><strong>If you&rsquo;re eligible, the down-payment assistance beats the 401(k) loan:</strong> a 0%-interest, no-payment deferred second mortgage (Hometown Heroes / Florida Assist / NCHFA) strictly dominates a 5-year amortizing loan at prime-plus with payroll deductions, job-loss risk, and money out of the market. No Florida Housing source found bans a concurrent 401(k) loan, but FHFC does require the DPA to pair with a Florida Housing first mortgage &mdash; so ask the participating lender on your specific file.<span class="caveat">Keep the 401(k) loan in reserve for earnest money/closing costs rather than the option fee of a lease-option.</span></div></div>
+  </div>
+
+  <div class="callout danger">
+    <span class="k">The riskiest combo in this plan</span>
+    <p>Borrowing from retirement for a <strong>non-refundable option fee</strong>: if the option is never exercised, the fee is gone &mdash; but the loan, its payroll deductions, and its job-loss tax risk all remain. The research&rsquo;s clearest conclusion: <strong>do not take the 401(k) loan until a vetted, recorded contract exists</strong>, and weigh what happens if employment changes. One more caution: an illustration in the research estimates a $10,000 loan taken 20 years before retirement can forfeit $60,000+ of growth at assumed market returns.</p>
+  </div>
+
+  <h3>Questions to put to your plan administrator (Empower)</h3>
+  <p class="sec-sub">The web can&rsquo;t tell you your plan&rsquo;s terms &mdash; only your administrator can. This is the instrument to get them.</p>
+  <ul class="check">
+    <li>Are participant loans allowed? Confirm the rule on <strong>one-time vs. one-at-a-time</strong>, and any waiting period after payoff.</li>
+    <li>Minimum loan amount? Any maximum below IRS limits? Is the <strong>$10,000 IRS floor exception</strong> adopted?</li>
+    <li>Origination and ongoing fees, and how they&rsquo;re charged? Current interest rate and its formula (prime + ?)?</li>
+    <li>May I <strong>continue pre-tax contributions and receive the full employer match</strong> while repaying?</li>
+    <li>Is a longer principal-residence term offered? What&rsquo;s the max, and what purchase documentation is required <em>before</em> approval? Confirm option fees get the standard 5-year term.</li>
+    <li>What happens at separation &mdash; immediate full payoff, continued direct payments, or a cure period?</li>
+    <li>Is spousal consent required? Which investments are sold to fund the loan, and how are repayments reinvested?</li>
+    <li>How fast are funds disbursed, and what loan documents will I get (my mortgage lender will need the loan instrument)?</li>
+  </ul>
+</section>
+<!-- ================= CHECKLIST ================= -->
+<section class="block" id="checklist" aria-labelledby="h-checklist">
+  <h2 id="h-checklist">Decision checklist: before any money moves</h2>
+  <p class="sec-sub">Not checkboxes &mdash; steps to work through with a realtor, a lender, and an attorney when (and if) a specific deal ever appears.</p>
+  <ul class="check">
+    <li>Pull your credit. If 640+ is achievable within 12&ndash;24 months, prioritize the NCHFA (Charlotte) or Hometown Heroes / Florida Assist (Orlando) path over rent-to-own.</li>
+    <li>For any lease-option: verify the counterparty owns the property &mdash; Mecklenburg County Register of Deeds (ownership + liens) in NC; county property appraiser / tax collector / clerk of court in FL.</li>
+    <li>Get the price-lock, rent-credit percentage (and what voids it), maintenance/taxes/insurance/HOA split, assignment and extension rights in writing.</li>
+    <li>In North Carolina, insist the option contract meets &sect;47G-2 and is recorded within 5 business days. In Florida, assume one late payment forfeits everything unless the contract says otherwise.</li>
+    <li>Escrow all upfront money through a licensed attorney or title company &mdash; never wire to an individual.</li>
+    <li>Know the exact walkaway costs and what happens on a missed payment (in NC: cure once/12 mo, 30-day notice minimum).</li>
+    <li>Get a mortgage lender&rsquo;s written assessment of what it would take to qualify by the option deadline &mdash; no credible path to a mortgage = no deal.</li>
+    <li>Price-compare against FHA + assistance on the same numbers before signing anything.</li>
+    <li>Do not take the 401(k) loan until every check above is satisfied; weigh repayment risk if employment changes.</li>
+    <li>Report suspected fraud to the NC AG (1-877-5-NO-SCAM). In Florida, note that rental-application-fraud enforcement tightens under HB&nbsp;1293 effective Oct&nbsp;1, 2026.</li>
+  </ul>
+</section>
+
+<!-- ================= OPEN QUESTIONS ================= -->
+<section class="block" id="open" aria-labelledby="h-open">
+  <h2 id="h-open">Open questions and what couldn&rsquo;t be verified</h2>
+  <p class="sec-sub">Marked plainly, so nothing here is mistaken for settled fact.</p>
+  <ul class="check">
+    <li><strong>Divvy in Orlando:</strong> the Charlotte pass found Divvy listing Orlando among its 16 markets; the Orlando pass didn&rsquo;t re-verify this. It needs a direct check on divvyhomes.com before it changes the verdict.</li>
+    <li><strong>Landis terms not on their site:</strong> credit/income minimums, the buyback appreciation schedule, the 3% walkaway fee, and the late-payment policy exist only in third-party 2026 summaries &mdash; none verified on landis.com.</li>
+    <li><strong>Dream America wind-down:</strong> verified live on dreamamerica.com by the Orlando pass (Sept 30); the Charlotte pass flagged it couldn&rsquo;t confirm from the site itself. Net: Orlando&rsquo;s live verification stands.</li>
+    <li><strong>Charlotte private operators by name:</strong> Verbhouse&rsquo;s complete market list and any Charlotte-local private investor lease-option operators by name &mdash; only stale aggregator listings were found; private deals are one-off and unverifiable in advance.</li>
+    <li><strong>Orlando market numbers:</strong> Orlando home prices and market rents weren&rsquo;t covered in this research pass &mdash; only Realtor.com&rsquo;s &ldquo;shifting favorably toward homebuyers&rdquo; (July 2026) and an illustrative $250K example home.</li>
+    <li><strong>NC contract-for-deed rules</strong> beyond Chapter 47G &mdash; not separately researched; an NC attorney should opine on recharacterization risk.</li>
+    <li><strong>Per-room rents in Orlando and Charlotte</strong> weren&rsquo;t covered by the research &mdash; the worked example&rsquo;s ~$800 room contribution is an illustrative assumed figure, only grounded at the edges ($1,580 Charlotte 1BR average). Any real plan needs a listing-backed room rate.</li>
+    <li><strong>Subletting norms</strong> for NC/FL lease-option agreements reflect general contract doctrine, not a reviewed lease-option form &mdash; the agreement you sign is what actually governs.</li>
+    <li><strong>Hometown Heroes live balance:</strong> &gt;$25M remained as of 9/21/2026; the balance moves constantly. Check eHousingPlus / Florida Housing at application time. Income limits by county also shift.</li>
+    <li><strong>FHFC + 401(k) combination:</strong> no Florida Housing source was found explicitly addressing concurrent 401(k) loans; the permissibility conclusion rests on agency source-of-funds rules. Confirm with a participating lender.</li>
+    <li><strong>Your specific plan terms at Empower</strong> &mdash; one-time vs. one-at-a-time, fees, contribution suspension, separation policy &mdash; are unknowable from the web. The checklist asks for them in the 401(k) section above.</li>
+    <li><strong>FHA handbook quotes:</strong> verified against a compliance-site mirror of HUD 4000.1 text plus corroborating lender write-ups; hud.gov was not opened in the research session.</li>
+    <li><strong>Freddie Mac DTI exclusion:</strong> documented via a Freddie LP correspondent underwriting guide (index), not guide.freddiemac.com directly.</li>
+  </ul>
+</section>
+
+<!-- ================= SOURCES ================= -->
+<section class="block sources" id="sources" aria-labelledby="h-sources">
+  <h2 id="h-sources">Every source behind this page</h2>
+  <p class="sec-sub">Researched September 30, 2026. &ldquo;Verified live&rdquo; = read in a live browser session that day; &ldquo;index&rdquo; = found via web-index search/open.</p>
+
+  <h4>Charlotte: law, operators, market</h4>
+  <ul>
+    <li><span class="s-name">N.C.G.S. Chapter 47G (Option to Purchase Contracts)</span> &mdash; <a href="https://www.ncleg.gov/Laws/GeneralStatuteSections/Chapter47G">ncleg.gov/Laws/GeneralStatuteSections/Chapter47G</a><span class="s-note">Verified live; current through S.L. 2026-30. &sect;47G-2 recordation &amp; 14pt 3-day right; &sect;47G-4 cure rights; &sect;47G-5 30-day notice; &sect;47G-6 seller-default refund; &sect;47G-7 remedies.</span></li>
+    <li><span class="s-name">Landis &mdash; rent-to-own</span> &mdash; <a href="https://www.landis.com/rent-to-own/">landis.com/rent-to-own/</a><span class="s-note">Verified live. Program terms (free application, soft pull, coach, buy-back when mortgage-ready).</span></li>
+    <li><span class="s-name">Landis &mdash; rental home markets</span> &mdash; <a href="https://www.landis.com/rent-to-own/homes/">landis.com/rent-to-own/homes/</a><span class="s-note">Verified live. Market list showing NC cities without Charlotte; scaled back nationally.</span></li>
+    <li><span class="s-name">Landis &mdash; North Carolina</span> &mdash; <a href="https://www.landis.com/rent-to-own/in/north-carolina/">landis.com/rent-to-own/in/north-carolina/</a><span class="s-note">Verified live. NC markets: Triangle/Triad/Wilmington/Greenville/Fayetteville.</span></li>
+    <li><span class="s-name">Acre Homes &mdash; how it works</span> &mdash; <a href="https://acrehomes.com/how-it-works">acrehomes.com/how-it-works</a><span class="s-note">Verified live. 5% value share, Saver ~$3,792/Boost ~$4,171 on $500K home, 3-yr term.</span></li>
+    <li><span class="s-name">Scoop Charlotte, Sept 23, 2026</span> &mdash; <a href="https://www.scoopcharlotte.com/2026/09/23/meet-acre-homes-the-new-way-to-land-your-dream-home-in-charlotte/">scoopcharlotte.com &mdash; Acre Homes in Charlotte</a><span class="s-note">Index. &ldquo;Just landed in Charlotte,&rdquo; one resident placed in Lake Norman.</span></li>
+    <li><span class="s-name">Moneywise: Divvy Homes review</span> &mdash; <a href="https://moneywise.com/investing/real-estate/divvy-homes-review">moneywise.com/investing/real-estate/divvy-homes-review</a><span class="s-note">Index. 16 metros, no Carolinas; 1&ndash;2% upfront, ~25% to home savings, 3-yr term.</span></li>
+    <li><span class="s-name">Divvy Homes blog</span> &mdash; <a href="https://blog.divvyhomes.com/brookfield-to-acquire-divvy-homes/">blog.divvyhomes.com &mdash; Brookfield acquisition</a><span class="s-note">Index. ~$1B acquisition, early 2025; program continues.</span></li>
+    <li><span class="s-name">RISMedia / zavvie partnership</span> &mdash; <a href="https://www.rismedia.com/?p=241913">rismedia.com/?p=241913</a><span class="s-note">Index. 2026 program continuation, Orlando among 16 metros.</span></li>
+    <li><span class="s-name">Realtor.com MediaRoom, Aug 17, 2026</span> &mdash; <a href="https://mediaroom.realtor.com/2026-08-17-Realtor-com-R-July-Rent-Report-Renting-a-Starter-Home-Costs-Less-Than-Buying-in-All-50-Largest-U-S-Metros,-but-the-Gap-Is-Narrowing">mediaroom.realtor.com &mdash; July Rent Report</a><span class="s-note">Index. Charlotte starter rent $1,491; buying $2,153 (+$662); Orlando among markets shifting toward buyers.</span></li>
+    <li><span class="s-name">Realtor.com research, Aug 2026</span> &mdash; <a href="https://www.realtor.com/research/august-2026-data/">realtor.com/research/august-2026-data/</a><span class="s-note">Index. Charlotte median list $429K, &minus;2.5% YoY.</span></li>
+    <li><span class="s-name">Charlotte market guides (price context)</span> &mdash; <a href="https://www.thefinigangroup.com/blog/best-neighborhoods-in-charlotte-nc">thefinigangroup.com &mdash; neighborhoods</a>, <a href="https://laurashinkle.com/post/average-home-price-charlotte-nc-2026-market-report">laurashinkle.com &mdash; price report</a><span class="s-note">Index. $412K&ndash;$435K citywide median, $455K SF sold (Feb), $349,990 condos, starters in the $300s.</span></li>
+    <li><span class="s-name">Charlotte rent context</span> &mdash; <a href="https://www.apartmentlist.com/nc/charlotte/3-bedroom-single-family-home-in-charlotte--6">apartmentlist.com &mdash; 3BR rent</a>, <a href="https://www.Rentable.co/charlotte-nc/discover-this-three-bedroom-one-bath-single-family-home-in-east-charlotte">Rentable.co &mdash; 3BR rental</a><span class="s-note">Index. Avg 3BR $2,231&ndash;$2,593.</span></li>
+    <li><span class="s-name">Landis program aggregators (claims, not site-verified)</span> &mdash; <a href="https://thetopselected.com/article/673907-landis-rent-to-own-program-with-credit.html">thetopselected.com &mdash; Landis program</a>, <a href="https://medifacto.com/article/658829-rent-to-own-home-programs-for-low-income-11.html">medifacto.com &mdash; RTO programs</a><span class="s-note">Index. 550 FICO/$55K income, appreciation schedule, 3% walkaway fee &mdash; all unverified on landis.com.</span></li>
+    <li><span class="s-name">NCHFA &mdash; NC Home Advantage Mortgage</span> &mdash; <a href="https://www.nchfa.com/home-buyers/buy-home/nc-home-advantage-mortgage">nchfa.com &mdash; NC Home Advantage Mortgage</a><span class="s-note">Verified live. 3% DPA at 0%, forgiven yrs 11&ndash;15; 640 credit; &le;$152K income; DTI &le; 45%.</span></li>
+    <li><span class="s-name">NCHFA program guide (March 2026)</span> &mdash; <a href="https://internal.nchfa.com/sites/default/files/2026-03/20/NCHomeAdvantageMortgageProgramGuide.pdf">internal.nchfa.com &mdash; program guide PDF</a><span class="s-note">Index. Detailed DPA terms used in this page.</span></li>
+    <li><span class="s-name">NCHFA press release</span> &mdash; <a href="https://nchfa.com/news/press-release/more-north-carolinians-now-eligible-affordable-mortgages-and-15k-down-payment-assistance">nchfa.com &mdash; $15K down-payment assistance</a><span class="s-note">Index. NC 1st Home Advantage $15,000; MCC up to $2,000/yr; ongoing funding, ~$1B activity.</span></li>
+    <li><span class="s-name">NC rental scams (June 2026)</span> &mdash; <a href="https://www.reflector.com/apgstate/rental-scams-rising-across-north-carolina/article_375eaac5-9a69-5b26-8da-3d-61d0f74395cc.html">reflector.com &mdash; AG + Real Estate Commission warning</a><span class="s-note">Index. Rising scams; confirm ownership, tour, use a licensed broker.</span></li>
+    <li><span class="s-name">NCDOJ &mdash; &ldquo;We Buy Homes&rdquo; scams</span> &mdash; <a href="https://ncdoj.gov/protecting-consumers/mortgages-home-loans/we-buy-homes-scams/">ncdoj.gov &mdash; We Buy Homes scams</a><span class="s-note">Index. Never pay upfront before signing; check the county register of deeds for ownership.</span></li>
+    <li><span class="s-name">NCDOJ &mdash; AG cases on predatory agreements</span> &mdash; <a href="https://ncdoj.gov/attorney-general-jeff-jackson-frees-north-carolinians-from-predatory-real-estate-agreements/">ncdoj.gov &mdash; predatory real estate agreements</a><span class="s-note">Index. MV Realty / Stone Brook cases; 2023 Unfair Real Estate Agreements Act.</span></li>
+  </ul>
+
+  <h4>Orlando: programs, law, FHA + Florida assistance</h4>
+  <ul>
+    <li><span class="s-name">Dream America</span> &mdash; <a href="https://dreamamerica.com/">dreamamerica.com</a><span class="s-note">Verified live Sept 30: &ldquo;our lease purchase program ended in 2025 due to rising housing costs.&rdquo;</span></li>
+    <li><span class="s-name">Landis (Florida markets)</span> &mdash; <a href="https://www.landis.com/">landis.com</a>, <a href="https://www.landis.com/rent-to-own/in/florida/">/rent-to-own/in/florida/</a><span class="s-note">Verified live: Pompano Beach, Fort Lauderdale, Miami, Marco Island, Naples, Fort Myers, Cape Coral, Bradenton, Sarasota, North Port &mdash; no Orlando.</span></li>
+    <li><span class="s-name">JAAG Properties</span> &mdash; <a href="https://jaagproperties.com/">jaagproperties.com</a>, <a href="https://jaagproperties.com/rent-to-home/">/rent-to-home/</a><span class="s-note">Verified live: Canada-only.</span></li>
+    <li><span class="s-name">ActiveRain: Rent to Own in Florida 2026</span> &mdash; <a href="https://activerain.com/blogsview/5947195/rent-to-own-in-florida-2026-lease-options--risks--and-smarter-alternatives">activerain.com &mdash; Florida lease-option risks</a><span class="s-note">Index. No single FL statute; contract law + equitable-mortgage doctrine intersection.</span></li>
+    <li><span class="s-name">Investopedia: Lease Option</span> &mdash; <a href="https://www.investopedia.com/terms/l/lease-option.asp">investopedia.com/terms/l/lease-option</a><span class="s-note">Index. 1&ndash;5% fee, 3&ndash;5% worked example, 10&ndash;20% credits, 1&ndash;3 yr terms.</span></li>
+    <li><span class="s-name">FL Times: &ldquo;The Bigger Picture &mdash; Rent-to-Own Mess&rdquo;</span> &mdash; <a href="https://www.fltimes.com/news/the-bigger-picture-rent-to-own-mess/article_dd1b580c-d7b2-11e4-8b2d-7fc78e3a85ac.html">fltimes.com &mdash; rent-to-own fraud investigation</a><span class="s-note">Index. Fake sellers, forfeiture on one late payment, foreclosure theft, eviction-not-foreclosure.</span></li>
+    <li><span class="s-name">Hometown Heroes funding tracker</span> &mdash; <a href="https://www.makefloridayourhome.com/learn/florida-hometown-heroes-funding">makefloridayourhome.com &mdash; funding</a><span class="s-note">Index. $50M reopened 7/13/2026; &gt;$25M remained as of 9/21/2026 (eHousingPlus).</span></li>
+    <li><span class="s-name">Florida Assist guide</span> &mdash; <a href="https://www.makefloridayourhome.com/learn/florida-assist-second-mortgage-program">makefloridayourhome.com &mdash; Florida Assist</a><span class="s-note">Index. $10K at 0% deferred, not forgivable, 640 FICO, year-round.</span></li>
+    <li><span class="s-name">Hometown Heroes terms FAQs</span> &mdash; <a href="https://www.fhamortgagesource.com/florida-hometown-heroes-program-faqs-for-2024/">fhamortgagesource.com &mdash; program FAQs</a><span class="s-note">Index. 5% ($10K&ndash;$35K), 0% deferred 30-yr second, NOT forgivable, 640 credit, occupation rules, under-contract reservation.</span></li>
+    <li><span class="s-name">Orlando first-time-buyer programs 2026</span> &mdash; <a href="https://toporlandoliving.com/featured/orlando-first-time-home-buyer-programs/">toporlandoliving.com &mdash; Orlando programs</a><span class="s-note">Index. Orange County DPA detail; HFA Preferred/Advantage.</span></li>
+    <li><span class="s-name">FHA requirement summaries (citing HUD Handbook 4000.1)</span> &mdash; <a href="https://legalclarity.org/hud-handbook-4000-1-fha-loan-requirements-explained/">legalclarity.org &mdash; 4000.1 explained</a>, <a href="https://www.mortgage-world.com/fha-loan-requirements/">mortgage-world.com &mdash; FHA requirements</a><span class="s-note">Index. 580+/3.5%, 500&ndash;579/10%, &lt;500 ineligible; MIP costs; overlays.</span></li>
+    <li><span class="s-name">HB 1293 rental-fraud law</span> &mdash; <a href="https://www.bianchirealtyandpropertymanagement.com/blog/post/florida-rental-fraud-law-takes-effect-october-1-2026-what-landlords-and-property-managers-need-to-know">bianchirealtyandpropertymanagement.com &mdash; effective Oct 1, 2026</a><span class="s-note">Index. Rental-application fraud felony; enforcement climate note.</span></li>
+    <li><span class="s-name">Fla. Stat. &sect;559.9233 (disclosure regime text)</span> &mdash; <a href="https://www.flsenate.gov/Laws/Statutes/2023/0559.9233">flsenate.gov &mdash; &sect;559.9233</a><span class="s-note">Index (page text via search index; direct fetch timed out). Rental-purchase disclosure requirements; vehicle coverage unresolved.</span></li>
+  </ul>
+
+  <h4>The 401(k) loan rules</h4>
+  <ul>
+    <li><span class="s-name">IRS &mdash; Retirement Plans FAQs Regarding Loans</span> &mdash; <a href="https://www.irs.gov/retirement-plans/retirement-plans-faqs-regarding-loans">irs.gov &mdash; loan FAQs</a><span class="s-note">Verified live (full page read Sept 30). &sect;72(p) limits, 12-month lookback, 5-yr rule, purpose irrelevant.</span></li>
+    <li><span class="s-name">IRS &mdash; Retirement Topics: Loans</span> &mdash; <a href="https://www.irs.gov/retirement-plans/plan-participant-employee/retirement-topics-loans">irs.gov &mdash; retirement topics: loans</a><span class="s-note">Index. $10,000 floor exception is optional for plans.</span></li>
+    <li><span class="s-name">IRS &mdash; Fix-It Guide (participant loans / &sect;72(p))</span> &mdash; <a href="https://www.irs.gov/retirement-plans/401k-plan-fix-it-guide-participant-loans-dont-conform-to-the-requirements-of-the-plan-document-and-irc-section-72p">irs.gov &mdash; fix-it guide</a><span class="s-note">Index. Rates must resemble market rates (prime + 1&ndash;2% norm).</span></li>
+    <li><span class="s-name">IRS &mdash; plan sponsors tracking loans</span> &mdash; <a href="https://www.irs.gov/retirement-plans/its-up-to-plan-sponsors-to-track-loans-hardship-distributions">irs.gov &mdash; tracking loans</a><span class="s-note">Index. Plan must see purchase documentation before approving &gt;5-yr residence term.</span></li>
+    <li><span class="s-name">IRS &mdash; Plan Loan Offsets</span> &mdash; <a href="https://www.irs.gov/retirement-plans/plan-loan-offsets">irs.gov &mdash; plan loan offsets</a><span class="s-note">Index. QPLO rollover by tax-filing deadline with extensions.</span></li>
+    <li><span class="s-name">IRS &mdash; Plan Loan Cure Period</span> &mdash; <a href="https://www.irs.gov/retirement-plans/issue-snapshot-plan-loan-cure-period">irs.gov &mdash; cure period snapshot</a><span class="s-note">Index. Mid-employment default cure treatment.</span></li>
+    <li><span class="s-name">Treas. Reg. &sect;1.72(p)-1 text (benefitslink mirror)</span> &mdash; <a href="https://benefitslink.com/src/taxregs/72p-final.html">benefitslink.com &mdash; &sect;1.72(p)-1</a><span class="s-note">Index. Principal-residence exception Q&amp;A; tracing rules.</span></li>
+    <li><span class="s-name">Fannie Mae Selling Guide B3-6-05</span> &mdash; <a href="https://selling-guide.fanniemae.com/sel/b3-6-05/monthly-debt-obligations">selling-guide.fanniemae.com &mdash; B3-6-05</a><span class="s-note">Verified live. DTI exclusion for financial-asset-secured loans; reserves reduced by loan amount.</span></li>
+    <li><span class="s-name">FHA News Blog (HUD 4000.1 debt rules)</span> &mdash; <a href="https://www.fhanewsblog.com/fha-home-loan-approval-debt-ratios/">fhanewsblog.com &mdash; debt-ratio rules</a><span class="s-note">Index. 4000.1 DTI exclusion language + collateralized-loan source-of-funds rules.</span></li>
+    <li><span class="s-name">HUD Handbook 4000.1 II.B and II.C excerpts (compliance-site mirror)</span> &mdash; <a href="http://claudeforcompliance.com/downloads/regs/hud-4000-1-ii-b-credit-requirements-total.pdf">4000.1 II.B (mirror)</a>, <a href="http://claudeforcompliance.com/downloads/regs/hud-4000-1-ii-c-asset-requirements-manual.pdf">4000.1 II.C (mirror)</a><span class="s-note">Index. Text dated 04/10/2025 and 08/19/2024; FHA quotes cross-verified against corroborating lender write-ups (hud.gov not opened).</span></li>
+    <li><span class="s-name">Freddie Mac LP correspondent underwriting guide (Impac mirror)</span> &mdash; <a href="https://titanml.com/wp-content/uploads/guidelines/IMPAC/Conventional/LP-Open-Access-c.pdf">titanml.com &mdash; LP guide PDF</a><span class="s-note">Index. DTI exclusion for asset-secured installment debts (not guide.freddiemac.com directly).</span></li>
+    <li><span class="s-name">Cardinal Financial conventional lending guide (Fannie-based)</span> &mdash; <a href="https://octane.cardinalfinancialwholesale.com/wp-content/themes/octane-cfw/assets/pdf/lending-guide/chapter_09.pdf?v=1741011846">cardinalfinancialwholesale.com &mdash; chapter 9</a><span class="s-note">Index. 401(k)-secured borrowed funds as down-payment source.</span></li>
+    <li><span class="s-name">Motley Fool &mdash; 401(k) loan rules</span> &mdash; <a href="https://www.fool.com/retirement/plans/401k/loan/?source=askdougpancakes">fool.com &mdash; 401(k) loans</a><span class="s-note">Index. Interest mechanics, double-taxation, default, vested-only rule.</span></li>
+    <li><span class="s-name">Porte Brown</span> &mdash; <a href="https://www.portebrown.com/newsblog-archive/401-k-loans-yay-or-nay">portebrown.com &mdash; pros &amp; cons</a><span class="s-note">Index. Updated ~Sept 2026. Double-taxation nuance; pros/cons framing.</span></li>
+    <li><span class="s-name">Kiplinger</span> &mdash; <a href="https://www.kiplinger.com/article/investing/t001-c032-s014-5-reasons-401-k-loans-are-a-bad-idea.html">kiplinger.com &mdash; 5 reasons they&rsquo;re a bad idea</a><span class="s-note">Index. Contribution suspension, opportunity cost, job-loss risk.</span></li>
+    <li><span class="s-name">Bogleheads forum</span> &mdash; <a href="https://www.bogleheads.org/forum/viewtopic.php?p=6223353">bogleheads.org &mdash; double-taxation nuance</a><span class="s-note">Index. The clearly double-taxed piece is the interest.</span></li>
+    <li><span class="s-name">moneynav.com</span> &mdash; <a href="https://www.moneynav.com/blog/contemplating-a-401k-loan">moneynav.com &mdash; contemplating a 401(k) loan</a><span class="s-note">Index. Contribution/match crowd-out explainer.</span></li>
+    <li><span class="s-name">ASPPA</span> &mdash; <a href="https://www.asppa-net.org/news/2018/10/401k-loans-considerations-plan/">asppa-net.org &mdash; plan considerations</a><span class="s-note">Index. One-loan design, fee norms ($50, then $75).</span></li>
+    <li><span class="s-name">Wharton Pension Research Council WP2014-01</span> &mdash; <a href="https://pensionresearchcouncil.wharton.upenn.edu/wp-content/uploads/2015/09/WP2014-01-Lu-OSM-Utkus-Young-2.12.20144.pdf">wharton.upenn.edu &mdash; PRC paper</a><span class="s-note">Index. Loan not on credit reports; minimum-loan norms.</span></li>
+    <li><span class="s-name">NAPA Net</span> &mdash; <a href="https://www.napa-net.org/news/2025/8/how-do-plans-handle-loan-repayments-after-separation-from-service/">napa-net.org &mdash; repayments after separation</a><span class="s-note">Index. Plan practices vary at separation.</span></li>
+    <li><span class="s-name">accountinginsights.org</span> &mdash; <a href="https://accountinginsights.org/what-happens-if-you-have-a-401k-loan-and-lose-your-job/">job-loss explainer</a>, <a href="https://accountinginsights.org/understanding-401k-loan-interest-and-repayment-strategies/">interest explainer</a><span class="s-note">Index. Default/taxation path; prime + 1&ndash;2% norm.</span></li>
+    <li><span class="s-name">Florida Housing Finance Corp. &mdash; Hometown Heroes (official)</span> &mdash; <a href="https://www.floridahousing.org/live-local-act/hometown-heroes-program">floridahousing.org &mdash; Hometown Heroes</a><span class="s-note">Verified live. 5% ($10K&ndash;$35K), 0% deferred 30-yr second, not forgivable; official eligibility rules.</span></li>
+    <li><span class="s-name">FHFC Board package 1/21/2022 &mdash; Florida Assist</span> &mdash; <a href="https://floridahousing.org/docs/default-source/data-docs-and-reports/boardpackages/2022/january-21/information-items.pdf?sfvrsn=8b8bf67b_2">floridahousing.org &mdash; board package PDF</a><span class="s-note">Index. Florida Assist $10,000 at 0%, non-amortizing, one-time use across FHFC programs.</span></li>
+    <li><span class="s-name">2026 Florida DPA summaries</span> &mdash; <a href="https://www.lendingtree.com/home/mortgage/florida-first-time-homebuyer-programs/">lendingtree.com</a>, <a href="https://toporlandoliving.com/featured/orlando-first-time-home-buyer-programs/">toporlandoliving.com</a>, <a href="https://www.floridahomefinder.com/blog/down-payment-assistance-florida-programs-2026/">floridahomefinder.com</a>, <a href="https://www.mortgage-info.com/blog/florida-first-time-homebuyer-programs-2026">mortgage-info.com</a><span class="s-note">Index. Cross-program 2026 terms (Assist, HLP, HFA Preferred, Orange County DPA).</span></li>
+    <li><span class="s-name">Hometown Heroes 2026 funding coverage</span> &mdash; <a href="https://wflanews.iheart.com/featured/florida-news/content/2026-07-14-florida-hometown-heroes-program-reopens-with-up-to-35k-for-homebuyers/">wflanews.iheart.com</a>, <a href="https://www.linkedin.com/pulse/florida-hometown-heroes-funding-update-08-25-2026-osmany-garcia-vzi8e">linkedin.com &mdash; funding update</a><span class="s-note">Index. $50M reopened 7/13/2026; &gt;$35M remained as of 8/24/2026.</span></li>
+    <li><span class="s-name">FL FY2026-27 conforming bill text &mdash; Hometown Heroes statute</span> &mdash; <a href="http://www.freedomfirstbudget.com/content/Current/reports/Florida Hometown Hero Program.pdf">freedomfirstbudget.com &mdash; Hometown Hero Program PDF</a><span class="s-note">Index. Statutory terms for the 2026 program.</span></li>
+    <li><span class="s-name">Example plan loan application (Cumberland Heights 401(k))</span> &mdash; <a href="https://www.chconnect.net/pdfs/hr-forms/Loan App 1012.pdf">chconnect.net &mdash; loan application PDF</a><span class="s-note">Index. Example plan terms: $50 fee, $1,000 min, residence-loan term range 61&ndash;179 months.</span></li>
+  </ul>
+</section>
+
+<footer class="end">
+  <p>As-of September 30, 2026. Nothing here is legal or financial advice &mdash; it&rsquo;s the research, laid straight, so the options stay clear.</p>
+</footer>
+
+</div>
+</main>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ---------- city tabs ---------- */
+  var btnOrl = document.getElementById("btn-orlando");
+  var btnCha = document.getElementById("btn-charlotte");
+  var panOrl = document.getElementById("panel-orlando");
+  var panCha = document.getElementById("panel-charlotte");
+
+  function showOrlando(on) {
+    btnOrl.setAttribute("aria-pressed", on ? "true" : "false");
+    btnCha.setAttribute("aria-pressed", on ? "false" : "true");
+    panOrl.hidden = !on;
+    panCha.hidden = on;
+  }
+  btnOrl.addEventListener("click", function () { showOrlando(true); });
+  btnCha.addEventListener("click", function () { showOrlando(false); });
+
+  /* ---------- charts ---------- */
+  var NS = "http://www.w3.org/2000/svg";
+  /**
+   * Draw a horizontal bar chart.
+   * rows: [{label, value, tone}] tone in budget|typical|high
+   */
+  function hbar(svgId, rows, opts) {
+    var g = document.getElementById(svgId);
+    if (!g) return;
+    var svg = g.ownerSVGElement;
+    var W = opts.w, labelW = opts.labelW;
+    var max = Math.max.apply(null, rows.map(function (r) { return r.value; }));
+    var barW = W - labelW - 96;
+    var lineH = opts.rowH || 52;
+    rows.forEach(function (r, i) {
+      var y = 14 + i * lineH;
+      var fill;
+      if (r.tone === "budget") fill = "#7d8894";
+      else if (r.tone === "high") fill = "#c25941";
+      else fill = "#2fae74";
+      var label = document.createElementNS(NS, "text");
+      label.setAttribute("x", labelW - 10);
+      label.setAttribute("y", y + 22);
+      label.setAttribute("text-anchor", "end");
+      label.setAttribute("fill", r.tone === "budget" ? "currentColor" : "currentColor");
+      label.setAttribute("font-weight", "600");
+      label.setAttribute("class", "chart-label");
+      label.textContent = r.label;
+      var bar = document.createElementNS(NS, "rect");
+      bar.setAttribute("x", labelW);
+      bar.setAttribute("y", y);
+      bar.setAttribute("width", Math.max(2, (r.value / max) * barW));
+      bar.setAttribute("height", 30);
+      bar.setAttribute("rx", 5);
+      bar.setAttribute("fill", fill);
+      bar.setAttribute("fill-opacity", r.tone === "budget" ? "0.55" : "0.9");
+      var val = document.createElementNS(NS, "text");
+      val.setAttribute("x", labelW + (r.value / max) * barW + 10);
+      val.setAttribute("y", y + 21);
+      val.setAttribute("fill", "currentColor");
+      val.setAttribute("font-weight", "700");
+      val.textContent = "$" + r.value.toLocaleString("en-US");
+      g.appendChild(label);
+      g.appendChild(bar);
+      g.appendChild(val);
+    });
+    svg.setAttribute("viewBox", "0 0 " + W + " " + (10 + rows.length * lineH + 22));
+  }
+
+  hbar("ch1bars", [
+    { label: "Your $1,000 budget", value: 1000, tone: "budget" },
+    { label: "Starter-home rent", value: 1491, tone: "typical" },
+    { label: "Lease-option, low end", value: 1500, tone: "typical" },
+    { label: "Cost to buy starter", value: 2153, tone: "typical" },
+    { label: "Lease-option, high end", value: 2600, tone: "high" }
+  ], { w: 640, labelW: 235, rowH: 52 });
+
+  hbar("ch2bars", [
+    { label: "1% option \u00B7 CLT $300K", value: 3000, tone: "typical" },
+    { label: "Your $5K deposit", value: 5000, tone: "budget" },
+    { label: "FHA 3.5% \u00B7 ORL $250K", value: 8750, tone: "typical" },
+    { label: "5% option \u00B7 CLT $300K", value: 15000, tone: "typical" },
+    { label: "Acre 5% \u00B7 CLT $500K", value: 25000, tone: "high" }
+  ], { w: 640, labelW: 235, rowH: 58 });
+
+  /* ---------- 401(k) calculators ---------- */
+  function money(n) {
+    return "$" + Math.round(n).toLocaleString("en-US");
+  }
+  function setOut(el, html) {
+    el.innerHTML = html;
+  }
+
+  var ciVested = document.getElementById("ci-vested");
+  var coLoan = document.getElementById("co-loan");
+  function calcLoan() {
+    var v = parseFloat(ciVested.value);
+    if (!isFinite(v) || v <= 0) { setOut(coLoan, "Enter a balance to see your max loan."); return; }
+    var max = Math.min(0.5 * v, 50000);
+    setOut(coLoan, 'Max loan: <span class="num">' + money(max) + "</span>" +
+      (v >= 100000 ? " (capped at $50,000)" : " (50% of vested balance)"));
+  }
+  ciVested.addEventListener("input", calcLoan);
+
+  var ciDeposit = document.getElementById("ci-deposit");
+  var coVested = document.getElementById("co-vested");
+  function calcVested() {
+    var d = parseFloat(ciDeposit.value);
+    if (!isFinite(d) || d <= 0) { setOut(coVested, "Enter a deposit to see the vested balance needed."); return; }
+    if (d > 50000) {
+      setOut(coVested, "A <span class=\"num\">" + money(d) + "</span> loan exceeds the $50,000 IRS cap regardless of balance.");
+      return;
+    }
+    setOut(coVested, "Vested balance needed: <span class=\"num\">" + money(2 * d) + "</span>");
+  }
+  ciDeposit.addEventListener("input", calcVested);
+
+  var ciAmount = document.getElementById("ci-amount");
+  var ciRate = document.getElementById("ci-rate");
+  var ciYears = document.getElementById("ci-years");
+  var coRepay = document.getElementById("co-repay");
+  function calcRepay() {
+    var P = parseFloat(ciAmount.value);
+    var rate = parseFloat(ciRate.value);
+    var yrs = parseFloat(ciYears.value);
+    if (!isFinite(P) || P <= 0) { setOut(coRepay, "Enter amount and rate for an estimate."); return; }
+    if (!isFinite(rate) || rate < 0) { setOut(coRepay, "Enter a rate to estimate the payment."); return; }
+    if (!isFinite(yrs) || yrs <= 0) { setOut(coRepay, "Enter the term to estimate the payment."); return; }
+    var n = yrs * 12; /* monthly payments */
+    var r = rate / 100 / 12;
+    var monthly = r === 0 ? P / n : P * r / (1 - Math.pow(1 + r, -n));
+    var perPaycheck = monthly * 12 / 26;
+    setOut(coRepay,
+      "About <span class=\"num\">" + money(monthly) + "</span>/mo (" + Math.round(n) +
+      " payments)" + " &middot; roughly <span class=\"num\">" + money(perPaycheck) +
+      "</span> per biweekly paycheck, payroll-deducted.");
+  }
+  ciAmount.addEventListener("input", calcRepay);
+  ciRate.addEventListener("input", calcRepay);
+  ciYears.addEventListener("input", calcRepay);
+})();
+</script>
+</body>
+</html>
