@@ -1,0 +1,161 @@
+<style>
+  .bwrap { font-family: -apple-system, system-ui, sans-serif; box-sizing: border-box; width: 100%; color: var(--hatch-widget-text); font-size: 13px; }
+  .bhead { padding: 10px 12px 4px; }
+  .bhead h3 { margin: 0; font-size: 15px; }
+  .bhead p { margin: 2px 0 0; color: var(--hatch-widget-muted); font-size: 12px; }
+  .bgroup { margin: 10px 8px 0; border: 1px solid var(--hatch-widget-border); border-radius: 10px; overflow: hidden; background: var(--hatch-widget-surface); }
+  .bgroup-title { padding: 8px 12px; font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: .04em; background: var(--hatch-widget-surface-muted); color: var(--hatch-widget-muted); display: flex; justify-content: space-between; }
+  .brow { display: grid; grid-template-columns: 26px 1fr auto; gap: 8px; align-items: center; padding: 9px 12px; border-top: 1px solid var(--hatch-widget-border); }
+  .brow:first-of-type { border-top: none; }
+  .brow.paid .bname, .brow.paid .bamt { color: var(--hatch-widget-muted); text-decoration: line-through; }
+  .bname { font-weight: 600; line-height: 1.25; }
+  .bnote { font-weight: 400; color: var(--hatch-widget-muted); font-size: 11.5px; display: block; }
+  .bdue { color: var(--hatch-widget-muted); font-size: 11.5px; display: block; margin-top: 2px; }
+  .bamt { width: 84px; text-align: right; font-weight: 600; background: transparent; border: 1px solid var(--hatch-widget-border); border-radius: 6px; padding: 5px 6px; color: var(--hatch-widget-text); font-size: 13px; }
+  .bamt:focus { outline: 2px solid var(--hatch-widget-focus); border-color: transparent; }
+  .bcheck { width: 18px; height: 18px; accent-color: var(--hatch-widget-accent); cursor: pointer; }
+  .bsum { margin: 10px 8px 0; border: 1px solid var(--hatch-widget-border); border-radius: 10px; background: var(--hatch-widget-surface); padding: 10px 12px; }
+  .bsum .row { display: flex; justify-content: space-between; padding: 3px 0; }
+  .bsum .big { font-weight: 700; font-size: 14px; border-top: 1px solid var(--hatch-widget-border); margin-top: 6px; padding-top: 8px; }
+  .binc { margin: 10px 8px 12px; border: 1px dashed var(--hatch-widget-border); border-radius: 10px; padding: 10px 12px; color: var(--hatch-widget-muted); font-size: 12px; }
+  .binc b { color: var(--hatch-widget-text); }
+  .tag { display: inline-block; font-size: 10px; font-weight: 700; padding: 1px 6px; border-radius: 8px; margin-left: 6px; vertical-align: 1px; }
+  .tag.hot { background: var(--hatch-widget-accent); color: var(--hatch-widget-on-accent); }
+  .tag.ok { border: 1px solid var(--hatch-widget-border); color: var(--hatch-widget-muted); }
+</style>
+<div class="bwrap">
+  <div class="bhead">
+    <h3>October budget</h3>
+    <p>Tick a bill when it's paid. Tap an amount to edit it — totals update live.</p>
+  </div>
+  <div id="groups"></div>
+  <div class="bsum" id="summary"></div>
+  <div class="bgroup" style="margin-bottom: 4px;">
+    <div class="bgroup-title"><span>Every paycheck ($1,241.50) — pay in this order</span><span></span></div>
+    <div class="brow"><div></div><div><div class="bname">1. Mazda <span class="tag hot">FIRST</span></div><span class="bnote">Morning the check lands, before anything else</span></div><b class="bamt" style="border:none">$338</b></div>
+    <div class="brow"><div></div><div><div class="bname">2. Rent share</div><span class="bnote">$524.99 via FAIRWINDS on the 1st; $500 from BofA ~15th</span></div><b class="bamt" style="border:none">$512</b></div>
+    <div class="brow"><div></div><div><div class="bname">3. State Farm</div><span class="bnote">Half of monthly — catch-up after Oct 5</span></div><b class="bamt" style="border:none">$59</b></div>
+    <div class="brow"><div></div><div><div class="bname">4. HFD + subscriptions</div><span class="bnote">Dental, Disney+, Google AI, iCloud+, Microsoft 365</span></div><b class="bamt" style="border:none">$27</b></div>
+    <div class="brow"><div></div><div><div class="bname">5. Phones</div><span class="bnote">Verizon + AT&T (verify AT&T balance)</span></div><b class="bamt" style="border:none">$63</b></div>
+    <div class="brow"><div></div><div><div class="bname">6. Sporadic buffer — baby + car</div><span class="bnote">Untouchable until baby or car needs it; rolls over</span></div><b class="bamt" style="border:none">$120</b></div>
+    <div class="brow"><div></div><div><div class="bname">7. Gas + food + living</div><span class="bnote">Whatever is left — about $120</span></div><b class="bamt" style="border:none">~$120</b></div>
+  </div>
+  <div class="binc">
+    <b>Income:</b> Sep 25 paycheck <b>$1,241.50</b> received &middot; extra cash after Oct 5 (TBD) &middot; next paycheck <b>$1,241.50</b> on Oct 9<br>
+    <b>Resolved:</b> Split Pay $200 — paid Sep 25 via BofA debit (card 7062), plan complete. Stale "missed payment" emails disregarded.<br>
+    <b>Bank balances (Sep 29):</b> ~$13.75 total across BofA — nearly empty ahead of Oct 1.
+  </div>
+</div>
+<script>
+(function () {
+  var ROWS = [
+    { id: "sf",   group: "A", name: "State Farm", tag: "hot", tagText: "URGENT", amount: 118.40, due: "Past due (Aug 28)", note: "Lapse risk — revisit after Oct 5 with extra funds" },
+    { id: "mfs",  group: "A", name: "Mazda MFS", amount: 262.14, due: "Sep 29", note: "30-day grace before bureau reporting — pay by Oct 9 paycheck" },
+    { id: "hfd",  group: "A", name: "HFD dental", amount: 24.56, due: "Sep 29", note: "Letting it bounce — revisit after Oct 5" },
+    { id: "icl",  group: "A", name: "iCloud+", amount: 2.99, due: "Sep 30", note: "Update card or storage drops to 5 GB" },
+    { id: "sp1",  group: "A", name: "Split Pay 1st", amount: 524.99, due: "Oct 1", note: "Covered via FAIRWINDS (dedicated account)" },
+    { id: "ent",  group: "A", name: "Enterprise", amount: 65.27, due: "Collections (60 days)", note: "Rental privileges suspended until paid" },
+    { id: "m365", group: "B", name: "Microsoft 365", amount: 9.99, due: "Billing problem", note: "Check App Store subscriptions" },
+    { id: "att",  group: "B", name: "AT&T", amount: 100.00, due: "Unknown", note: "Balance over $100 — verify" },
+    { id: "dis",  group: "B", name: "Disney+", amount: 11.99, due: "Oct 7", note: "" },
+    { id: "gai",  group: "B", name: "Google AI Plus", amount: 4.99, due: "Oct 9", note: "" },
+    { id: "vz",   group: "B", name: "Verizon", amount: 26.70, due: "Oct 10 (autopay)", note: "" },
+    { id: "sp3",  group: "B", name: "Split Pay 2nd", amount: 500.00, due: "~Oct 15", note: "2nd half of rent split" }
+  ];
+  var GROUPS = [
+    { id: "A", title: "Due now — Oct 2" },
+    { id: "B", title: "Oct 3 — Oct 31" }
+  ];
+  function money(n) { return "$" + Number(n).toFixed(2); }
+  function defaults() {
+    var paid = {}, amounts = {};
+    ROWS.forEach(function (r) { paid[r.id] = false; amounts[r.id] = r.amount; });
+    return { paid: paid, amounts: amounts };
+  }
+  function render(state) {
+    var host = document.getElementById("groups");
+    host.innerHTML = "";
+    GROUPS.forEach(function (g) {
+      var box = document.createElement("div");
+      box.className = "bgroup";
+      var title = document.createElement("div");
+      title.className = "bgroup-title";
+      var gRows = ROWS.filter(function (r) { return r.group === g.id; });
+      var gTotal = gRows.reduce(function (s, r) { return s + Number(state.amounts[r.id] || 0); }, 0);
+      var gLeft = gRows.reduce(function (s, r) { return s + (state.paid[r.id] ? 0 : Number(state.amounts[r.id] || 0)); }, 0);
+      title.innerHTML = "<span></span><span></span>";
+      title.children[0].textContent = g.title;
+      title.children[1].textContent = money(gLeft) + " left of " + money(gTotal);
+      box.appendChild(title);
+      gRows.forEach(function (r) {
+        var row = document.createElement("div");
+        row.className = "brow" + (state.paid[r.id] ? " paid" : "");
+        var cb = document.createElement("input");
+        cb.type = "checkbox"; cb.className = "bcheck"; cb.checked = !!state.paid[r.id];
+        cb.setAttribute("aria-label", "Mark " + r.name + " paid");
+        cb.addEventListener("change", function () {
+          var next = JSON.parse(JSON.stringify(state));
+          next.paid[r.id] = cb.checked;
+          window.hatchWidget.setState(next);
+        });
+        var mid = document.createElement("div");
+        var name = document.createElement("div");
+        name.className = "bname";
+        name.textContent = r.name;
+        if (r.tag) {
+          var t = document.createElement("span");
+          t.className = "tag " + r.tag; t.textContent = r.tagText;
+          name.appendChild(t);
+        }
+        mid.appendChild(name);
+        if (r.note) {
+          var note = document.createElement("span");
+          note.className = "bnote"; note.textContent = r.note;
+          mid.appendChild(note);
+        }
+        var due = document.createElement("span");
+        due.className = "bdue"; due.textContent = "Due: " + r.due;
+        mid.appendChild(due);
+        var amt = document.createElement("input");
+        amt.type = "number"; amt.min = "0"; amt.step = "0.01";
+        amt.className = "bamt"; amt.value = Number(state.amounts[r.id]).toFixed(2);
+        amt.setAttribute("aria-label", r.name + " amount");
+        amt.addEventListener("change", function () {
+          var next = JSON.parse(JSON.stringify(state));
+          next.amounts[r.id] = Math.max(0, Number(amt.value) || 0);
+          window.hatchWidget.setState(next);
+        });
+        row.appendChild(cb); row.appendChild(mid); row.appendChild(amt);
+        box.appendChild(row);
+      });
+      host.appendChild(box);
+    });
+    var allLeft = ROWS.reduce(function (s, r) { return s + (state.paid[r.id] ? 0 : Number(state.amounts[r.id] || 0)); }, 0);
+    var allPaid = ROWS.reduce(function (s, r) { return s + (state.paid[r.id] ? Number(state.amounts[r.id] || 0) : 0); }, 0);
+    var aLeft = ROWS.filter(function (r) { return r.group === "A"; }).reduce(function (s, r) { return s + (state.paid[r.id] ? 0 : Number(state.amounts[r.id] || 0)); }, 0);
+    var bLeft = ROWS.filter(function (r) { return r.group === "B"; }).reduce(function (s, r) { return s + (state.paid[r.id] ? 0 : Number(state.amounts[r.id] || 0)); }, 0);
+    var sum = document.getElementById("summary");
+    sum.innerHTML = "";
+    var rows = [
+      ["Due now – Oct 2 (remaining)", money(aLeft)],
+      ["Oct 3 – Oct 31 (remaining)", money(bLeft)],
+      ["Paid so far", money(allPaid)]
+    ];
+    rows.forEach(function (x) {
+      var d = document.createElement("div");
+      d.className = "row";
+      d.innerHTML = "<span></span><b></b>";
+      d.children[0].textContent = x[0]; d.children[1].textContent = x[1];
+      sum.appendChild(d);
+    });
+    var big = document.createElement("div");
+    big.className = "row big";
+    big.innerHTML = "<span>Total still to pay</span><span></span>";
+    big.children[1].textContent = money(allLeft);
+    sum.appendChild(big);
+  }
+  var state = window.hatchWidget.getState(defaults());
+  render(state);
+  window.addEventListener("hatch-widget-state", function (e) { render(e.detail.state); });
+})();
+</script>
