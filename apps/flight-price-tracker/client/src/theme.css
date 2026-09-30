@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+@import "tailwindcss-safe-area";
+
+@theme {
+  --text-xs: 12px;
+  --text-xs--line-height: 16px;
+  --text-sm: 14px;
+  --text-sm--line-height: 20px;
+  --text-base: 16px;
+  --text-base--line-height: 24px;
+  --text-lg: 18px;
+  --text-lg--line-height: 26px;
+  --text-xl: 20px;
+  --text-xl--line-height: 28px;
+  --text-2xl: 24px;
+  --text-2xl--line-height: 31px;
+  --text-3xl: 30px;
+  --text-3xl--line-height: 36px;
+}
+
+:root {
+  color-scheme: light dark;
+  --bg: #f7f9fb;
+  --surface: #ffffff;
+  --surface-strong: #eef3f6;
+  --text: #0b1f33;
+  --dim: #526779;
+  --border: #dce5ec;
+  --accent: #1a8a82;
+  --accent-soft: #d9eeeb;
+  --signal: #f2a23a;
+  --danger: #a74335;
+  --radius: 14px;
+  --shadow: 0 18px 44px rgba(11, 31, 51, 0.08);
+  --space-surface: var(--surface);
+  --space-surface-alt: var(--surface-strong);
+  --space-muted: var(--dim);
+  --space-border: var(--border);
+  --space-accent: var(--accent);
+  font-family: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); }
+button, input, select, textarea { font: inherit; }
+button { -webkit-tap-highlight-color: transparent; }
+.mono { font-family: "IBM Plex Mono", ui-monospace, monospace; }
+.calendar-date {
+  min-width: 0;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg);
+  padding: 12px 14px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #07131f;
+    --surface: #0e2234;
+    --surface-strong: #142c40;
+    --text: #edf5f7;
+    --dim: #9fb2c1;
+    --border: #284155;
+    --accent: #57c5b9;
+    --accent-soft: #123c3b;
+    --signal: #ffb858;
+    --danger: #ef8d7d;
+    --shadow: 0 18px 44px rgba(0, 0, 0, 0.25);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .sheet-panel { animation: sheet-in 180ms ease-out; }
+  @keyframes sheet-in { from { transform: translateY(18px); opacity: .4; } }
+}
